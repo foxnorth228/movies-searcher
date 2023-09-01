@@ -1,0 +1,31 @@
+.selectorGenre {
+    width: 100%;
+    padding: 0.6rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.19);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectorGenre__element {
+    display: inline-flex;
+}
+
+.selectorGenre__radio {
+    display: none;
+}
+
+.selectorGenre__label {
+    padding: 0.33rem 1rem;
+    background-color: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
+    margin: 0 0.25rem;
+}
+
+.selectorGenre__radio:checked + .selectorGenre__label {
+    background-color: black;
+    color: white;
+}
