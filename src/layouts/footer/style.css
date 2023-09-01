@@ -37,7 +37,7 @@
         padding: 0.5rem 1rem;
         grid-row-gap: 1.5rem;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-rows: 1fr 1fr max-content;
     }
     .footer__icons {
         display: flex;
