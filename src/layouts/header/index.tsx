@@ -10,7 +10,7 @@ const Header = () => {
     <header className="header">
       <div className="header__content">
         <Logo />
-        <Searcher />
+        <Searcher className="header__mobile_down" />
         <SwitcherTheme />
       </div>
       <SelectorGenre />

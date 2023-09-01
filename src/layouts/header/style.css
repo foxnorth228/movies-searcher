@@ -3,8 +3,21 @@
 }
 
 .header__content {
+    margin-bottom: 1rem;
     padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 600px) {
+    .header__content {
+        justify-content: space-between;
+    }
+
+    .header__mobile_down {
+        width: 100%;
+        order: 1;
+    }
 }

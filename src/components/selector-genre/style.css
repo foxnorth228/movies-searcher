@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .selectorGenre__element {
@@ -22,7 +23,7 @@
     border: 1px solid rgba(0, 0, 0, 0.10);
     border-radius: 0.75rem;
     font-size: 0.95rem;
-    margin: 0 0.25rem;
+    margin: 0.25rem;
 }
 
 .selectorGenre__radio:checked + .selectorGenre__label {

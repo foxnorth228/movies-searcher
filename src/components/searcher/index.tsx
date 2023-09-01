@@ -1,10 +1,14 @@
 import React from 'react';
 import './style.css';
 
-const Searcher = () => {
+interface ISearcher {
+  className: string;
+}
+
+const Searcher = ({ className }: ISearcher) => {
   return (
-    <article>
-      <input />
+    <article className={className}>
+      <input className="searcher" />
     </article>
   );
 };
