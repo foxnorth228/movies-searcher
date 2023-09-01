@@ -4,12 +4,17 @@ import Card from '@components/card';
 import ButtonShowMore from '@components/button-show-more';
 
 const CardList = () => {
-  const arr = new Array(16).fill(0);
+  const arr = new Array(16).fill({
+    title: 'Title',
+    imageSrc: 'image',
+    year: 2000,
+    director: 'Director',
+  });
   return (
-    <section>
-      <section>
-        {arr.map((_, i) => (
-          <Card key={i} />
+    <section className="cardList">
+      <section className="cardList__container">
+        {arr.map((el, i) => (
+          <Card key={i} info={el} />
         ))}
       </section>
       <ButtonShowMore />

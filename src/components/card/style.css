@@ -1,0 +1,16 @@
+.card__title {
+    font-family: Roboto, serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 1.25rem 0 0;
+}
+
+.card__description {
+    font-family: Roboto, serif;
+    font-size: 0.85rem;
+}
+
+.card__image {
+    width: 100%;
+    height: auto;
+}
