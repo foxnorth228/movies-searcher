@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -51,6 +52,9 @@ module.exports = {
           noErrorOnMissing: true
         },
       ],
+    }),
+    new Dotenv({
+      systemvars: true
     }),
     new MiniCssExtractPlugin(),
   ],
