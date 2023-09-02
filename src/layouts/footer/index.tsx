@@ -22,7 +22,7 @@ const Footer = () => {
           <i>icon</i>
         </article>
       </section>
-      <h2 className='footer__title'>2023 Modsen company</h2>
+      <h2 className="footer__title">2023 Modsen company</h2>
     </footer>
   );
 };
