@@ -9,6 +9,7 @@
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 1.5rem 1rem;
     overflow-y: hidden;
+    justify-items: center;
 }
 
 @media screen and (max-width: 600px) {

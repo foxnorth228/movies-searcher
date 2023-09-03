@@ -10,7 +10,6 @@ const CardList = () => {
   useEffect(() => {
     if (data) {
       setMoviesIds(data);
-      console.log(data);
     }
     if (error) {
       console.log(error);
