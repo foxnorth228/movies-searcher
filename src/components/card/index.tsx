@@ -1,48 +1,39 @@
-import React, { useState } from 'react';
 import './style.css';
-import { useGetInfoQuery } from '@src/servises/imdb-api';
-import { useMovies } from '@store/moviesSlice';
+import React, { useState } from 'react';
+import { useIdToMovies, useMovies } from '@store/moviesSlice';
 import CardFallback from './fallback';
+import { IMovie } from '@src/servises/imdb-api';
 
 interface ICard {
-  info: {
-    id: string;
-  };
+  info: IMovie;
 }
 
-interface ICardInfo {
-  title: string;
-  year: string;
-  image: string;
-  directors: string;
-}
+const Card = ({ info: { id } }: ICard) => {
+  const [isLoadedImage, setIsLoadImage] = useState(false);
+  const movies = useMovies();
+  useIdToMovies(id, movies);
 
-const Card = ({ info }: ICard) => {
-  const [isLoaded, setIsLoad] = useState(false);
-  const [movies] = useMovies();
-  useGetInfoQuery(info.id, { skip: info.id === 'skip' || info.id in movies });
-  let cardInfo: ICardInfo = {
+  let cardInfo = {
     title: 'title',
     year: '',
     image: '',
     directors: '',
   };
-  if (info.id in movies) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    cardInfo = movies[info.id];
+  if (id in movies) {
+    cardInfo = movies[id as keyof typeof movies];
   }
+
   return (
     <article className="card">
-      {isLoaded ? null : <CardFallback />}
-      {info.id !== 'skip' && (
-        <div className="card__content" style={{ display: isLoaded ? '' : 'none' }}>
+      {isLoadedImage ? null : <CardFallback />}
+      {id !== 'skip' && (
+        <div className="card__content" style={{ display: isLoadedImage ? '' : 'none' }}>
           <img
             className="card__image"
             src={cardInfo.image}
             alt="movie-image"
             onLoad={() => {
-              setIsLoad(true);
+              setIsLoadImage(true);
             }}
           />
           <h3 className="card__title">{cardInfo.title}</h3>

@@ -1,27 +1,43 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-interface ISearchResponse {
-  results: Array<{
-    id: string;
-  }>;
-}
-
 export interface IMovie {
   id: string;
 }
+
+interface ISearchResponse {
+  results: Array<IMovie>;
+  errorMessage: string;
+}
+
 export const imdbApi = createApi({
   reducerPath: 'imdbApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.URL }),
   endpoints: (builder) => ({
     getMovies: builder.query<IMovie[], void>({
-      async queryFn(arg, queryApi, extraOptions, fetchWithBQ) {
+      async queryFn(_, __, ___, fetchWithBQ) {
         const apiKey = process.env.API_KEY ?? '';
-        const url = new URLSearchParams();
-        url.append('title_type', 'tv_movie');
-        const res = await fetchWithBQ('/AdvancedSearch/' + apiKey + '?' + url.toString());
-        const results = (res.data as ISearchResponse).results;
+        const urlParams = new URLSearchParams();
+        urlParams.append('title_type', 'tv_movie');
+        urlParams.append('count', '16');
+        const url = '/AdvancedSearch/' + apiKey + '?' + urlParams.toString();
+        const res = await fetchWithBQ(url);
+
+        const { data: resData, error } = res;
+        const data = resData as ISearchResponse;
+        if (error) {
+          return { error };
+        }
+        if (data.errorMessage && data.errorMessage !== '') {
+          return {
+            error: {
+              status: 400,
+              statusText: data.errorMessage,
+              data: data.errorMessage,
+            },
+          };
+        }
         return {
-          data: results.map((el) => {
+          data: data.results.map((el) => {
             return { id: el.id };
           }),
         };
@@ -34,4 +50,3 @@ export const imdbApi = createApi({
 });
 
 export const { useGetMoviesQuery, useGetInfoQuery } = imdbApi;
-export const selectMovies = imdbApi.endpoints.getMovies.select();
