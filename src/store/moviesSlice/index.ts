@@ -33,9 +33,7 @@ export const useIdToMovies = (id: string, movies: object) => {
   const { error } = useGetInfoQuery(id, { skip: id === 'skip' || id in movies });
   useEffect(() => {
     if (error) {
-      alert(
-        'error' in error ? error.error : JSON.stringify((error as FetchBaseQueryError).data)
-      );
+      alert('error' in error ? error.error : JSON.stringify((error as FetchBaseQueryError).data));
     }
   }, [error]);
 };
