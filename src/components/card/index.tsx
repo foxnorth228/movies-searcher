@@ -25,7 +25,7 @@ const Card = ({ info: { id } }: ICard) => {
 
   return (
     <article className="card">
-      {isLoadedImage ? null : <CardFallback />}
+      {id === 'skip' || !isLoadedImage ? <CardFallback /> : null}
       {id !== 'skip' && (
         <div className="card__content" style={{ display: isLoadedImage ? '' : 'none' }}>
           <img
