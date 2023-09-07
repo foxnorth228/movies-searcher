@@ -3,8 +3,9 @@ import './style.css';
 
 const Logo = () => {
   return (
-    <section>
-      <h1>Logo</h1>
+    <section className="logo">
+      <i className="logo__icon"></i>
+      <h1>ModsenFilms</h1>
     </section>
   );
 };

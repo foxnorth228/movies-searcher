@@ -4,10 +4,12 @@ import Card from '@components/card';
 import ButtonShowMore from '@components/button-show-more';
 import { useGetMoviesQuery, IMovie } from '@src/servises/imdb-api';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { useSearchMovie } from '@store/moviesSlice';
 
 const CardList = () => {
   const [numMovies] = useState(16);
   const [pageMovies, setPageMovies] = useState(1);
+  const [searchWord] = useSearchMovie();
   const [moviesIds, setMoviesIds] = useState<IMovie[]>(
     new Array(numMovies * pageMovies).fill({ id: 'skip' })
   );
@@ -19,7 +21,11 @@ const CardList = () => {
     setMoviesIds([...moviesIds, ...new Array(numMovies).fill({ id: 'skip' })]);
   }, [numMovies, pageMovies, moviesIds]);
 
-  const { data, error } = useGetMoviesQuery(numMovies * pageMovies);
+  useEffect(() => {
+    setPageMovies(1);
+  }, [searchWord]);
+
+  const { data, error } = useGetMoviesQuery({ count: numMovies * pageMovies, title: searchWord });
   useEffect(() => {
     if (data) {
       setMoviesIds(data);
