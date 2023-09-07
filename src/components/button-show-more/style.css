@@ -10,4 +10,13 @@
     font-family: Roboto, serif;
     font-size: 1.1rem;
     font-weight: 700;
+    transition: background-color 0.8s linear;
+    &:hover {
+        cursor: pointer;
+        background-color: #dc7700;
+    }
+    &:active {
+        cursor: pointer;
+        background-color: #5b2e00;
+    }
 }

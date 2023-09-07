@@ -1,5 +1,5 @@
 import './style.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIdToMovies, useMovies } from '@store/moviesSlice';
 import CardFallback from './fallback';
 import { IMovie } from '@src/servises/imdb-api';
@@ -14,7 +14,7 @@ const Card = ({ info: { id } }: ICard) => {
   useIdToMovies(id, movies);
 
   let cardInfo = {
-    title: 'title',
+    title: '',
     year: '',
     image: '',
     directors: '',
@@ -22,6 +22,10 @@ const Card = ({ info: { id } }: ICard) => {
   if (id in movies) {
     cardInfo = movies[id as keyof typeof movies];
   }
+
+  useEffect(() => {
+    setIsLoadImage(false);
+  }, [id]);
 
   return (
     <article className="card">
