@@ -1,6 +1,6 @@
 import { RootState } from '@src/store';
 import { useGetInfoQuery } from '@src/servises/imdb-api';
-import { setGenre, setSearchWord } from './index';
+import { setGenre, setSearchWord, setSelectedMovie } from './index';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
@@ -32,4 +32,12 @@ export const useIdToMovies = (id: string, movies: object) => {
       alert('error' in error ? error.error : JSON.stringify((error as FetchBaseQueryError).data));
     }
   }, [error]);
+};
+
+export const useSelectedMovie = () => {
+  const dispatch = useDispatch();
+  return [
+    useSelector((state: RootState) => state.movies.selectedMovie),
+    (str: string) => dispatch(setSelectedMovie(str)),
+  ] as [string, (str: string) => void];
 };

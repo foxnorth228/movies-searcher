@@ -5,9 +5,11 @@ import Main from '@src/layouts/main';
 import Footer from '@src/layouts/footer';
 import ModalDialogMovie from '@src/layouts/modal-dialog-movie';
 import { useToggleTheme } from '@store/themeSlice';
+import { useSelectedMovie } from '@store/moviesSlice';
 
 const App = () => {
   const [theme] = useToggleTheme();
+  const [selectedMovie] = useSelectedMovie();
   useEffect(() => {
     if (theme === 'light') {
       document.body.classList.add('light-theme');
@@ -20,7 +22,7 @@ const App = () => {
 
   return (
     <>
-      {false && <ModalDialogMovie />}
+      {selectedMovie !== '' && <ModalDialogMovie />}
       <Header />
       <Main />
       <Footer />

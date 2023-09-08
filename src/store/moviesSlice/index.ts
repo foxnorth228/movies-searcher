@@ -50,6 +50,6 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const { setSearchWord, setGenre } = moviesSlice.actions;
+export const { setSearchWord, setGenre, setSelectedMovie } = moviesSlice.actions;
 export default moviesSlice.reducer;
 export * from './hooks';

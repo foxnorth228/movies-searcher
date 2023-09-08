@@ -1,6 +1,6 @@
 import './style.css';
 import React, { useEffect, useState } from 'react';
-import { useIdToMovies, useMovies } from '@store/moviesSlice';
+import { useIdToMovies, useMovies, useSelectedMovie } from '@store/moviesSlice';
 import CardFallback from './fallback';
 import { IMovie } from '@src/servises/imdb-api';
 
@@ -9,6 +9,7 @@ interface ICard {
 }
 
 const Card = ({ info: { id } }: ICard) => {
+  const [, setSelectedMovie] = useSelectedMovie();
   const [isLoadedImage, setIsLoadImage] = useState(false);
   const movies = useMovies();
   useIdToMovies(id, movies);
@@ -31,7 +32,11 @@ const Card = ({ info: { id } }: ICard) => {
     <article className="card">
       {id === 'skip' || !isLoadedImage ? <CardFallback /> : null}
       {id !== 'skip' && (
-        <div className="card__content" style={{ display: isLoadedImage ? '' : 'none' }}>
+        <div
+          className="card__content"
+          style={{ display: isLoadedImage ? '' : 'none' }}
+          onClick={() => setSelectedMovie(id)}
+        >
           <img
             className="card__image"
             src={cardInfo.image}

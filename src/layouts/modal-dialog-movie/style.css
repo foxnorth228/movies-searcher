@@ -1,0 +1,9 @@
+.modalDialogMovie {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(75, 75, 75, 0.8);
+    z-index: 10;
+}
