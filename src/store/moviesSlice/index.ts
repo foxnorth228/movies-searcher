@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@src/store';
-import { imdbApi, useGetInfoQuery } from '@src/servises/imdb-api';
-import { useEffect } from 'react';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { imdbApi } from '@src/servises/imdb-api';
 
 export const moviesSlice = createSlice({
   name: 'movies',
@@ -11,6 +7,7 @@ export const moviesSlice = createSlice({
     value: {},
     searchWord: '',
     genre: '',
+    selectedMovie: '',
   },
   reducers: {
     setSearchWord: (state, action: PayloadAction<string>) => {
@@ -23,6 +20,16 @@ export const moviesSlice = createSlice({
       return {
         ...state,
         genre: action.payload,
+      };
+    },
+    setSelectedMovie: (state, action: PayloadAction<string>) => {
+      let payload = action.payload;
+      if (!(payload in state.value)) {
+        payload = '';
+      }
+      return {
+        ...state,
+        selectedMovie: payload,
       };
     },
   },
@@ -44,31 +51,5 @@ export const moviesSlice = createSlice({
 });
 
 export const { setSearchWord, setGenre } = moviesSlice.actions;
-export const useSearchMovie = () => {
-  const dispatch = useDispatch();
-  return [
-    useSelector((state: RootState) => state.movies.searchWord),
-    (str: string) => dispatch(setSearchWord(str)),
-  ] as [string, (str: string) => void];
-};
-export const useGenreMovie = () => {
-  const dispatch = useDispatch();
-  return [
-    useSelector((state: RootState) => state.movies.genre),
-    (str: string) => dispatch(setGenre(str)),
-  ] as [string, (str: string) => void];
-};
-export const useMovies = () => {
-  return useSelector((state: RootState) => state.movies.value);
-};
-
-export const useIdToMovies = (id: string, movies: object) => {
-  const { error } = useGetInfoQuery(id, { skip: id === 'skip' || id in movies });
-  useEffect(() => {
-    if (error) {
-      alert('error' in error ? error.error : JSON.stringify((error as FetchBaseQueryError).data));
-    }
-  }, [error]);
-};
-
 export default moviesSlice.reducer;
+export * from './hooks';
