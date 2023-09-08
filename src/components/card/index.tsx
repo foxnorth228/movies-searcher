@@ -12,7 +12,6 @@ const Card = ({ info: { id } }: ICard) => {
   const [isLoadedImage, setIsLoadImage] = useState(false);
   const movies = useMovies();
   useIdToMovies(id, movies);
-
   let cardInfo = {
     title: '',
     year: '',
@@ -22,7 +21,6 @@ const Card = ({ info: { id } }: ICard) => {
   if (id in movies) {
     cardInfo = movies[id as keyof typeof movies];
   }
-
   useEffect(() => {
     setIsLoadImage(false);
   }, [id]);

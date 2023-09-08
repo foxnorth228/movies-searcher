@@ -10,12 +10,19 @@ export const moviesSlice = createSlice({
   initialState: {
     value: {},
     searchWord: '',
+    genre: '',
   },
   reducers: {
     setSearchWord: (state, action: PayloadAction<string>) => {
       return {
         ...state,
         searchWord: action.payload,
+      };
+    },
+    setGenre: (state, action: PayloadAction<string>) => {
+      return {
+        ...state,
+        genre: action.payload,
       };
     },
   },
@@ -36,7 +43,7 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const { setSearchWord } = moviesSlice.actions;
+export const { setSearchWord, setGenre } = moviesSlice.actions;
 export const useSearchMovie = () => {
   const dispatch = useDispatch();
   return [
@@ -44,7 +51,13 @@ export const useSearchMovie = () => {
     (str: string) => dispatch(setSearchWord(str)),
   ] as [string, (str: string) => void];
 };
-
+export const useGenreMovie = () => {
+  const dispatch = useDispatch();
+  return [
+    useSelector((state: RootState) => state.movies.genre),
+    (str: string) => dispatch(setGenre(str)),
+  ] as [string, (str: string) => void];
+};
 export const useMovies = () => {
   return useSelector((state: RootState) => state.movies.value);
 };

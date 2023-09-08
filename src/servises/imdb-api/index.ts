@@ -13,13 +13,18 @@ export const imdbApi = createApi({
   reducerPath: 'imdbApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.URL }),
   endpoints: (builder) => ({
-    getMovies: builder.query<IMovie[], { count: number; title: string }>({
+    getMovies: builder.query<IMovie[], { count: number; title: string; genre: string }>({
       async queryFn(args, __, ___, fetchWithBQ) {
         const apiKey = process.env.API_KEY ?? '';
         const urlParams = new URLSearchParams();
         urlParams.append('title_type', 'tv_movie');
         urlParams.append('count', String(args.count));
-        urlParams.append('title', args.title);
+        if (args.title !== '') {
+          urlParams.append('title', args.title);
+        }
+        if (args.genre !== '') {
+          urlParams.append('genres', args.genre);
+        }
         const url = '/AdvancedSearch/' + apiKey + '?' + urlParams.toString();
         const res = await fetchWithBQ(url);
 

@@ -4,7 +4,7 @@ import Card from '@components/card';
 import ButtonShowMore from '@components/button-show-more';
 import { useGetMoviesQuery, IMovie } from '@src/servises/imdb-api';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { useSearchMovie } from '@store/moviesSlice';
+import { useGenreMovie, useSearchMovie } from '@store/moviesSlice';
 
 const CardList = () => {
   const [numPerPageMovies] = useState(16);
@@ -15,13 +15,18 @@ const CardList = () => {
   );
 
   const [searchWord] = useSearchMovie();
+  const [genre] = useGenreMovie();
   useEffect(() => {
     setPageMovies(1);
     setNumMovies(numPerPageMovies);
-  }, [numPerPageMovies, searchWord]);
+  }, [numPerPageMovies, searchWord, genre]);
 
-  const { data, error } = useGetMoviesQuery({ count: numMovies, title: searchWord });
-  const { data: testData } = useGetMoviesQuery({ count: numMovies + 1, title: searchWord });
+  const { data, error } = useGetMoviesQuery({ count: numMovies, title: searchWord, genre: genre });
+  const { data: testData } = useGetMoviesQuery({
+    count: numMovies + 1,
+    title: searchWord,
+    genre: genre,
+  });
 
   useEffect(() => {
     if (data) {
