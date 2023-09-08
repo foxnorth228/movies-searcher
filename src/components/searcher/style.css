@@ -3,9 +3,15 @@
     width: 100%;
     max-width: 30rem;
     height: 2rem;
+    background-color: white;
+}
+
+.searcher:hover {
+    background-color: var(--searcher-background, #e8e8e8);
 }
 
 .searcher__input {
+    background-color: inherit;
     box-sizing: border-box;
     width: calc(100% - 60px);
     height: 100%;
@@ -18,8 +24,13 @@
     display: block;
     width: 60px;
     height: 100%;
-    background: url("@assets/search.svg") center center no-repeat;
+    background: url("@assets/search.svg") no-repeat center center;
+    background-color: inherit;
     background-size: 60% 60%;
     border: 2px solid #C4C4C4;
     border-left: none;
+}
+
+.searcher__icon:hover {
+    cursor: pointer;
 }

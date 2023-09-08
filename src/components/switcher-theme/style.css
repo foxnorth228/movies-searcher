@@ -1,0 +1,55 @@
+.switcher {
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid #fd7e14;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.switcher:hover {
+    cursor: pointer;
+}
+
+.switcher:hover > .switcher__slider:before {
+    background-color: #dcdcdc;
+}
+
+.switcher__input {
+    display: none;
+}
+
+.switcher__slider {
+    z-index: -1;
+    display: block;
+    width: 50px;
+    height: 30px;
+    background-color: transparent;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    transition: background-color 0.3s linear;
+}
+
+.switcher__slider::before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #fd7e14;
+    border-radius: 50%;
+    background-color: white;
+    transform: translateX(0px);
+    transition: transform 0.3s linear, background-color 0.3s linear;
+}
+
+.switcher__input:checked + .switcher__slider{
+    background-color: #fd7e14;
+}
+
+.switcher__input:checked + .switcher__slider:before{
+    transform: translateX(20px);
+}
