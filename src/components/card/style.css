@@ -6,6 +6,18 @@
     min-height: 15em;
 }
 
+.card__content {
+    width: 100%;
+    height: fit-content;
+    padding: 0.3rem;
+    transition: box-shadow 0.2s linear;
+}
+
+.card__content:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 #6b6b6b;
+}
+
 .card__title {
     font-family: Roboto, serif;
     font-size: 0.9rem;
