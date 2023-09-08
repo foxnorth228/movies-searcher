@@ -22,8 +22,10 @@ const Card = ({ info: { id } }: ICard) => {
     cardInfo = movies[id as keyof typeof movies];
   }
   useEffect(() => {
-    setIsLoadImage(false);
-  }, [id]);
+    if (!(id in movies)) {
+      setIsLoadImage(false);
+    }
+  }, [id, movies]);
 
   return (
     <article className="card">
