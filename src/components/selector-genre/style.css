@@ -19,11 +19,17 @@
 
 .selectorGenre__label {
     padding: 0.33rem 1rem;
-    background-color: rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.10);
+    background-color: #f0f0f0;
+    border: 1px solid #d8d8d8;
     border-radius: 0.75rem;
     font-size: 0.95rem;
     margin: 0.25rem;
+    transition: background-color 0.3s linear, color 0.3s linear;
+}
+
+.selectorGenre__label:hover {
+    cursor: pointer;
+    background-color: #d8d8d8;
 }
 
 .selectorGenre__radio:checked + .selectorGenre__label {
