@@ -58,9 +58,11 @@ const CardList = () => {
   return (
     <section className="cardList">
       <section className="cardList__container">
-        {moviesIds.length !== 0
-          ? moviesIds.map((el, i) => <Card key={i} info={el} />)
-          : 'There are no movies suitable for your needs'}
+        {moviesIds.length !== 0 ? (
+          moviesIds.map((el, i) => <Card key={i} info={el} />)
+        ) : (
+          <p className="cardList__fallback">There are no movies suitable for your needs</p>
+        )}
       </section>
       <ButtonShowMore style={{ display: buttonDisplay }} moveNextPage={moveNextPage} />
     </section>

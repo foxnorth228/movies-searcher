@@ -11,6 +11,11 @@
     justify-items: center;
 }
 
+.cardList__fallback {
+    font-size: 1.4rem;
+    grid-area: 1 / 1 / span 1 / span 4;
+}
+
 @media screen and (max-width: 600px) {
     .cardList__container {
         grid-template-columns: 1fr;
