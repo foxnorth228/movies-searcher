@@ -34,3 +34,7 @@
 .searcher__icon:hover {
     cursor: pointer;
 }
+
+.searcher__icon:active {
+    background-color: #6b6b6b;
+}
