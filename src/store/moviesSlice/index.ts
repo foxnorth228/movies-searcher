@@ -7,7 +7,7 @@ export const moviesSlice = createSlice({
     value: {},
     searchWord: '',
     genre: '',
-    selectedMovie: '',
+    selectedMovie: {},
   },
   reducers: {
     setSearchWord: (state, action: PayloadAction<string>) => {
@@ -23,13 +23,13 @@ export const moviesSlice = createSlice({
       };
     },
     setSelectedMovie: (state, action: PayloadAction<string>) => {
-      let payload = action.payload;
-      if (!(payload in state.value)) {
-        payload = '';
+      let obj = {};
+      if (action.payload in state.value) {
+        obj = state.value[action.payload as keyof typeof state.value];
       }
       return {
         ...state,
-        selectedMovie: payload,
+        selectedMovie: obj,
       };
     },
   },

@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <>
-      {selectedMovie !== '' && <ModalDialogMovie />}
+      {Object.keys(selectedMovie).length !== 0 && <ModalDialogMovie />}
       <Header />
       <Main />
       <Footer />

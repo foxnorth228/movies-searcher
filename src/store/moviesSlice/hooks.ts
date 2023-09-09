@@ -39,5 +39,5 @@ export const useSelectedMovie = () => {
   return [
     useSelector((state: RootState) => state.movies.selectedMovie),
     (str: string) => dispatch(setSelectedMovie(str)),
-  ] as [string, (str: string) => void];
+  ] as [object, (str: string) => void];
 };
