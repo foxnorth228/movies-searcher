@@ -5,7 +5,7 @@
 .cardList__container {
     display: grid;
     margin: 1.2rem 0.7rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(4, min-content);
     grid-gap: 1.5rem 1rem;
     justify-items: center;
@@ -16,7 +16,31 @@
     grid-area: 1 / 1 / span 1 / span 4;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+    .cardList__container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1280px) {
+    .cardList__container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .cardList__container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 531px) and (max-width: 767px) {
+    .cardList__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 530px) {
     .cardList__container {
         grid-template-columns: 1fr;
         grid-row-gap: 0;

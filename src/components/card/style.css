@@ -2,8 +2,8 @@
     display: flex;
     position: relative;
     width: 100%;
-    max-width: 300px;
-    min-height: 15em;
+    max-width: 15rem;
+    min-height: 15rem;
 }
 
 .card__content {

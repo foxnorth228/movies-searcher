@@ -9,11 +9,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    --modal-dialog-height: 480px;
 }
 
 .modalDialogMovie__content {
-    width: 640px;
-    height: 480px;
+    width: calc(var(--modal-dialog-height) * 4 / 3);
+    height: var(--modal-dialog-height);
     position: relative;
     display: flex;
     justify-content: center;
@@ -34,8 +35,9 @@
 }
 
 .modalDialogMovie__video {
-    width: 640px;
-    height: 480px;
+    width: calc(var(--modal-dialog-height) * 4 / 3);
+    height: var(--modal-dialog-height);
+    border: none;
 }
 
 .modalDialogMovie__errorMessage {
@@ -44,4 +46,18 @@
     font-size: 2rem;
     color: white;
     text-align: center;
+}
+
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+    .modalDialogMovie {
+        --modal-dialog-height: 423px;
+    }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1280px) {
+
+}
+
+.video-player-frame {
+    width: 100px;
 }

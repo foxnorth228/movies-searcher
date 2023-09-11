@@ -43,6 +43,22 @@
     font-family: 'Roboto', serif;
     font-weight: 500;
 }
+
+@media screen and (max-width: 768px) {
+    .footer__container {
+        padding: 1rem;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(3, minmax(max-content, 1fr));
+    }
+    .footer__icons {
+        justify-self: end;
+        grid-column: 3 / span 1;
+    }
+    .footer__icons > i {
+        margin-right: 1rem;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .footer__container {
         padding: 0.5rem 1rem;

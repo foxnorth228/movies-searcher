@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import { useSelectedMovie } from '@store/moviesSlice';
 import MovieFallback from '@src/layouts/modal-dialog-movie/fallback';
@@ -6,6 +6,20 @@ import MovieFallback from '@src/layouts/modal-dialog-movie/fallback';
 const ModalDialogMovie = () => {
   const [selectedMovie, setSelectedMovie] = useSelectedMovie();
   const [isLoadedFrame, setIsLoadedFrame] = useState(false);
+
+  const [width, setWidth] = useState(640);
+  useEffect(() => {
+    const mediaWatcher1280 = window.matchMedia('(max-width: 1280px)');
+    setWidth(mediaWatcher1280.matches ? 564 : 640);
+    function updateWidth(e: MediaQueryListEvent) {
+      setWidth(e.matches ? 564 : 640);
+    }
+    mediaWatcher1280.addEventListener('change', updateWidth);
+    return function cleanup() {
+      mediaWatcher1280.removeEventListener('change', updateWidth);
+    };
+  }, [width]);
+  console.log(width);
 
   let trailer;
   if ('trailer' in selectedMovie) {
@@ -16,7 +30,7 @@ const ModalDialogMovie = () => {
 
   const urlParams = new URLSearchParams();
   urlParams.append('autoplay', 'false');
-  urlParams.append('width', '640');
+  urlParams.append('width', String(width));
   return (
     <section onClick={() => setSelectedMovie('')} className="modalDialogMovie">
       <article className="modalDialogMovie__content">
@@ -28,8 +42,6 @@ const ModalDialogMovie = () => {
             width="640"
             height="480"
             allowFullScreen={true}
-            frameBorder="no"
-            scrolling="no"
             onLoad={() => setIsLoadedFrame(true)}
           ></iframe>
         ) : (

@@ -7,7 +7,8 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { useGenreMovie, useSearchMovie } from '@store/moviesSlice';
 
 const CardList = () => {
-  const [numPerPageMovies] = useState(16);
+  const mediaWatcher = window.matchMedia('(max-width: 768px)');
+  const [numPerPageMovies, setNumPerPageMovies] = useState(mediaWatcher.matches ? 4 : 16);
   const [pageMovies, setPageMovies] = useState(1);
   const [numMovies, setNumMovies] = useState(numPerPageMovies * pageMovies);
   const [moviesIds, setMoviesIds] = useState<IMovie[]>(
@@ -21,6 +22,15 @@ const CardList = () => {
     setNumMovies(numPerPageMovies);
   }, [numPerPageMovies, searchWord, genre]);
 
+  useEffect(() => {
+    const mediaWatcher = window.matchMedia('(max-width: 768px)');
+    setNumPerPageMovies(mediaWatcher.matches ? 4 : 16);
+    function updateNumPerPageMovies(e: MediaQueryListEvent) {
+      setNumPerPageMovies(e.matches ? 4 : 16);
+    }
+    mediaWatcher.addEventListener('change', updateNumPerPageMovies);
+    return () => mediaWatcher.removeEventListener('change', updateNumPerPageMovies);
+  }, [numPerPageMovies]);
   const { data, error } = useGetMoviesQuery({ count: numMovies, title: searchWord, genre: genre });
   const { data: testData } = useGetMoviesQuery({
     count: numMovies + 1,
