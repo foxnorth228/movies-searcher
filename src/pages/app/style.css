@@ -11,6 +11,7 @@
     --selector-genre-text: black;
     --selector-genre-selected: black;
     --selector-genre-selected-text: white;
+    --card-box-shadow: #6b6b6b;
 }
 
 .light-theme {
@@ -26,6 +27,7 @@
     --selector-genre-text: black;
     --selector-genre-selected: black;
     --selector-genre-selected-text: white;
+    --card-box-shadow: #6b6b6b;
 }
 
 .dark-theme {
@@ -41,6 +43,7 @@
     --selector-genre-text: black;
     --selector-genre-selected: #131313;
     --selector-genre-selected-text: white;
+    --card-box-shadow: #b4b4b4;
 }
 
 body {

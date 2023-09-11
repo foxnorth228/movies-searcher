@@ -15,7 +15,7 @@
 
 .card__content:hover {
     cursor: pointer;
-    box-shadow: 0 0 10px 0 #6b6b6b;
+    box-shadow: 0 0 10px 0 var(--card-box-shadow);
 }
 
 .card__title {
