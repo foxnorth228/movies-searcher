@@ -2,23 +2,36 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import { useSelectedMovie } from '@store/moviesSlice';
 import MovieFallback from '@src/layouts/modal-dialog-movie/fallback';
+import useMatchMedia from '@hooks/useMatchMedia';
 
 const ModalDialogMovie = () => {
   const [selectedMovie, setSelectedMovie] = useSelectedMovie();
   const [isLoadedFrame, setIsLoadedFrame] = useState(false);
 
+  const mediaMatch1280 = useMatchMedia('(min-width: 992px) and (max-width: 1280px)');
+  const mediaMatch991 = useMatchMedia('(min-width: 601px) and (max-width: 991px)');
+  const mediaMatch600 = useMatchMedia('(min-width: 481px) and (max-width: 600px)');
+  const mediaMatch480 = useMatchMedia('(max-width: 480px)');
   const [width, setWidth] = useState(640);
   useEffect(() => {
-    const mediaWatcher1280 = window.matchMedia('(max-width: 1280px)');
-    setWidth(mediaWatcher1280.matches ? 564 : 640);
-    function updateWidth(e: MediaQueryListEvent) {
-      setWidth(e.matches ? 564 : 640);
+    switch (true) {
+      case mediaMatch1280:
+        setWidth(564);
+        break;
+      case mediaMatch991:
+        setWidth(480);
+        break;
+      case mediaMatch600:
+        setWidth(360);
+        break;
+      case mediaMatch480:
+        setWidth(240);
+        break;
+      default:
+        setWidth(640);
+        break;
     }
-    mediaWatcher1280.addEventListener('change', updateWidth);
-    return function cleanup() {
-      mediaWatcher1280.removeEventListener('change', updateWidth);
-    };
-  }, [width]);
+  }, [mediaMatch1280, mediaMatch480, mediaMatch600, mediaMatch991]);
   console.log(width);
 
   let trailer;
@@ -33,15 +46,20 @@ const ModalDialogMovie = () => {
   urlParams.append('width', String(width));
   return (
     <section onClick={() => setSelectedMovie('')} className="modalDialogMovie">
-      <article className="modalDialogMovie__content">
+      <article
+        style={{ width: width, height: (width / 4) * 3 }}
+        className="modalDialogMovie__content"
+      >
         {!isLoadedFrame && typeof movie === 'string' && <MovieFallback />}
         {typeof movie === 'string' ? (
           <iframe
+            style={{ width: width, height: (width / 4) * 3 }}
             className="modalDialogMovie__video"
             src={String(movie) + '?' + urlParams.toString()}
             width="640"
             height="480"
             allowFullScreen={true}
+            scrolling="no"
             onLoad={() => setIsLoadedFrame(true)}
           ></iframe>
         ) : (
