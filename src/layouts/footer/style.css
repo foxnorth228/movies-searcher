@@ -23,6 +23,17 @@
 
 .footer__icons {
     grid-column: 5 / span 1;
+    display: flex;
+}
+
+.footer__icons > i {
+    display: block;
+    width: 17px;
+    height: 16px;
+    margin-right: 27px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .footer__title {

@@ -16,10 +16,10 @@ const Footer = () => {
           <p>Advertise Developers</p>
         </article>
         <article className="footer__icons">
-          <i>icon</i>
-          <i>icon</i>
-          <i>icon</i>
-          <i>icon</i>
+          <i style={{ backgroundImage: "url('./icon-facebook.svg')" }}></i>
+          <i style={{ backgroundImage: "url('./icon-twitter.svg')" }}></i>
+          <i style={{ backgroundImage: "url('./icon-instagram.svg')" }}></i>
+          <i style={{ backgroundImage: "url('./icon-linkedin.svg')" }}></i>
         </article>
       </section>
       <h2 className="footer__title">2023 Modsen company</h2>
