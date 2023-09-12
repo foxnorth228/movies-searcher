@@ -5,7 +5,7 @@ import ButtonShowMore from '@components/button-show-more';
 import { useGetMoviesQuery, IMovie } from '@src/servises/imdb-api';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { useGenreMovie, useSearchMovie } from '@store/moviesSlice';
-import useMatchMedia from '@hooks/useMatchMedia';
+import useMatchMedia from '@hooks/use-match-media';
 
 const CardList = () => {
   const mediaMatch = useMatchMedia('(max-width: 768px)');

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import { useSelectedMovie } from '@store/moviesSlice';
 import MovieFallback from '@src/layouts/modal-dialog-movie/fallback';
-import useMatchMedia from '@hooks/useMatchMedia';
+import useMatchMedia from '@hooks/use-match-media';
 
 const ModalDialogMovie = () => {
   const [selectedMovie, setSelectedMovie] = useSelectedMovie();

@@ -6,6 +6,7 @@ import Footer from '@src/layouts/footer';
 import ModalDialogMovie from '@src/layouts/modal-dialog-movie';
 import { useToggleTheme } from '@store/themeSlice';
 import { useSelectedMovie } from '@store/moviesSlice';
+import ErrorBoundary from '@pages/app/error-boundary';
 
 const App = () => {
   const [theme] = useToggleTheme();
@@ -21,12 +22,12 @@ const App = () => {
   }, [theme]);
 
   return (
-    <>
+    <ErrorBoundary>
       {Object.keys(selectedMovie).length !== 0 && <ModalDialogMovie />}
       <Header />
       <Main />
       <Footer />
-    </>
+    </ErrorBoundary>
   );
 };
 
