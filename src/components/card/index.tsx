@@ -3,12 +3,16 @@ import React, { useEffect, useState } from 'react';
 import { useIdToMovies, useMovies, useSelectedMovie } from '@store/moviesSlice';
 import CardFallback from './fallback';
 import { IMovie } from '@src/servises/imdb-api';
+import useElementOnScreen from '@hooks/use-element-on-screen';
 
 interface ICard {
   info: IMovie;
 }
 
 const Card = ({ info: { id } }: ICard) => {
+  const [containerRef, isVisible] = useElementOnScreen({
+    threshold: 0.0,
+  });
   const [, setSelectedMovie] = useSelectedMovie();
   const [isLoadedImage, setIsLoadImage] = useState(false);
   const movies = useMovies();
@@ -29,7 +33,11 @@ const Card = ({ info: { id } }: ICard) => {
   }, [id, movies]);
 
   return (
-    <article className="card">
+    <article
+      ref={containerRef}
+      style={{ opacity: isVisible ? 1 : 0 }}
+      className="card render-animation"
+    >
       {id === 'skip' || !isLoadedImage ? <CardFallback /> : null}
       {id !== 'skip' && (
         <div
