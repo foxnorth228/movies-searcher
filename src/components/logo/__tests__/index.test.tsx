@@ -1,7 +1,11 @@
+import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import Logo from '../index';
+import { cleanup, render } from '@testing-library/react';
+import Logo from '@components/logo';
+
+afterEach(cleanup);
 
 test('1', () => {
-  expect(1 + 2).toBe(3);
+  const { getByText } = render(<Logo />);
+  expect(getByText(/ModsenFilms/i)).toBeTruthy();
 });

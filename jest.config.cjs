@@ -5,5 +5,9 @@ module.exports = {
   },
   extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
   moduleDirectories: ['node_modules', 'src'],
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx']
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  moduleNameMapper: {
+    "^@components(.*)$": "<rootDir>/src/components$1",
+    '\\.(css|scss)$': 'identity-obj-proxy'
+  }
 };
