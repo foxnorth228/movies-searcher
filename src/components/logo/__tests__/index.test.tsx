@@ -5,7 +5,7 @@ import Logo from '@components/logo';
 
 afterEach(cleanup);
 
-test('1', () => {
+test('Logo test', () => {
   const { getByText } = render(<Logo />);
   expect(getByText(/ModsenFilms/i)).toBeTruthy();
 });
