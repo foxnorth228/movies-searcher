@@ -1,16 +1,24 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, waitFor } from '@testing-library/react';
 import CardList from '@components/cardlist';
-import { Provider } from 'react-redux';
-import { store } from '@src/store';
+import renderWithStore from '@utils/renderWithStore';
+import { expect } from '@jest/globals';
+import userEvent from '@testing-library/user-event';
+import { act } from 'react-test-renderer';
 
 afterEach(cleanup);
 
-test('Logo test', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <CardList />
-    </Provider>
-  );
+test('Logo test', async () => {
+  const { getAllByText, getByText } = renderWithStore(<CardList />);
+  let button = getByText(/show more/i);
+  expect(button).toBeTruthy();
+  fireEvent.click(button);
+  button = getByText(/show more/i);
+  await act(async () => {
+    await userEvent.click(button);
+  });
+  await act(async () => {
+    await userEvent.click(button);
+  });
 });

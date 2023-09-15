@@ -7,6 +7,7 @@ const SwitcherTheme = () => {
   return (
     <label className="switcher">
       <input
+        value="theme"
         className="switcher__input"
         checked={theme === 'dark'}
         type="checkbox"

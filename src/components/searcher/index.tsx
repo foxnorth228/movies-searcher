@@ -27,7 +27,12 @@ const Searcher = ({ className }: ISearcher) => {
           }
         }}
       />
-      <label onClick={() => submit()} htmlFor="search" className="searcher__icon"></label>
+      <label
+        data-testid="searcher-label"
+        onClick={() => submit()}
+        htmlFor="search"
+        className="searcher__icon"
+      ></label>
     </article>
   );
 };

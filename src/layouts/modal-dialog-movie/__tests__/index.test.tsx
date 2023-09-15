@@ -1,16 +1,12 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent } from '@testing-library/react';
 import ModalDialogMovie from '@src/layouts/modal-dialog-movie';
-import { Provider } from 'react-redux';
-import { store } from '@src/store';
+import renderWithStore from '@utils/renderWithStore';
+import { expect } from '@jest/globals';
 
 afterEach(cleanup);
 
 test('Logo test', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <ModalDialogMovie />
-    </Provider>
-  );
+  renderWithStore(<ModalDialogMovie />);
 });

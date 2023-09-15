@@ -32,7 +32,6 @@ const ModalDialogMovie = () => {
         break;
     }
   }, [mediaMatch1280, mediaMatch480, mediaMatch600, mediaMatch991]);
-  console.log(width);
 
   let trailer;
   if ('trailer' in selectedMovie) {

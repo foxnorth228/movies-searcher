@@ -1,4 +1,4 @@
-import {jest} from '@jest/globals';
+import { jest } from '@jest/globals';
 import '@testing-library/jest-dom';
 import { fetch, Headers, Request, Response } from 'cross-fetch';
 import { rest } from 'msw';
@@ -10,6 +10,40 @@ global.Request = Request;
 global.Response = Response;
 
 export const handlers = [
+  rest.get('http://localhost/AdvancedSearch/*', (req, res, ctx) => {
+    const count = req.url.searchParams.get('count');
+    const num = parseInt(count ?? '') ?? 250;
+    if (num === 3 * 16) {
+      return res(
+        ctx.json({
+          errorMessage: 'test error',
+        })
+      );
+    }
+    return res(
+      ctx.json({
+        results: Array(num)
+          .fill(0)
+          .map((_, i) => {
+            return { id: `test${i}` };
+          }),
+      })
+    );
+  }),
+  rest.get('http://localhost/Title/key/:movieId/*', (req, res, ctx) => {
+    const { movieId } = req.params;
+    const num = movieId.slice(4);
+    return res(
+      ctx.json({
+        id: movieId,
+        title: `Title${num}`,
+        year: 'year',
+        image: './test-image.webp',
+        directors: 'Director',
+        trailer: '',
+      })
+    );
+  }),
   rest.get('https://imdb-api.com/en/API', (_req, res, ctx) => {
     return res(ctx.json('{}'));
   }),
@@ -57,3 +91,5 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 });
+
+jest.spyOn(window, 'alert').mockImplementation(() => {});

@@ -50,7 +50,7 @@ export const imdbApi = createApi({
       },
     }),
     getInfo: builder.query<object, string>({
-      query: (name: string) => `/Title/${process.env.API_KEY ?? ''}/${name}/Trailer,`,
+      query: (name: string) => `/Title/${process.env.API_KEY ?? 'key'}/${name}/Trailer,`,
     }),
   }),
 });

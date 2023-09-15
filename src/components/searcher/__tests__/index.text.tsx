@@ -4,15 +4,14 @@ import { cleanup, fireEvent, render } from '@testing-library/react';
 import Searcher from '@components/searcher';
 import { Provider } from 'react-redux';
 import { store } from '@src/store';
-import { server } from '@src/setupTests';
+import { expect} from '@jest/globals';
+import renderWithStore from '@utils/renderWithStore';
 
 afterEach(cleanup);
 
 test('Logo test', () => {
-  const { getByDisplayValue, getByPlaceholderText } = render(
-    <Provider store={store}>
-      <Searcher className={''} />
-    </Provider>
+  const { getByTestId, getByDisplayValue, getByPlaceholderText } = renderWithStore(
+    <Searcher className={''} />
   );
   const input = getByPlaceholderText(/Search.../i);
   expect(input).toBeTruthy();
@@ -20,4 +19,8 @@ test('Logo test', () => {
   fireEvent.input(input, { target: { value: testValue } });
   const changedInput = getByDisplayValue(testValue);
   expect(changedInput).toBeTruthy();
+  fireEvent.keyUp(input);
+  fireEvent.keyUp(input, { key: 'Enter', code: 'Enter', charCode: 13 });
+  const label = getByTestId(/searcher-label/i);
+  fireEvent.click(label);
 });
