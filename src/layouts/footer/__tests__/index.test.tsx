@@ -6,5 +6,5 @@ import Footer from '@src/layouts/footer';
 afterEach(cleanup);
 
 test('Logo test', () => {
-  const { getByText } = render(<Footer />);
+  render(<Footer />);
 });

@@ -1,20 +1,19 @@
 import React from 'react';
-import './style.css';
+import * as styled from './styled';
 import { useToggleTheme } from '@store/themeSlice';
 
 const SwitcherTheme = () => {
   const [theme, setTheme] = useToggleTheme();
   return (
-    <label className="switcher">
-      <input
+    <styled.Switcher>
+      <styled.Switcher__Input
         value="theme"
-        className="switcher__input"
         checked={theme === 'dark'}
         type="checkbox"
         onChange={() => setTheme()}
       />
-      <span className="switcher__slider" />
-    </label>
+      <styled.Switcher__Slider />
+    </styled.Switcher>
   );
 };
 

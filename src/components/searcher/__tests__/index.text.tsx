@@ -1,17 +1,16 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { cleanup, fireEvent } from '@testing-library/react';
 import Searcher from '@components/searcher';
-import { Provider } from 'react-redux';
-import { store } from '@src/store';
-import { expect} from '@jest/globals';
+import { expect } from '@jest/globals';
 import renderWithStore from '@utils/renderWithStore';
+import { css } from 'styled-components';
 
 afterEach(cleanup);
 
 test('Logo test', () => {
   const { getByTestId, getByDisplayValue, getByPlaceholderText } = renderWithStore(
-    <Searcher className={''} />
+    <Searcher className={css``} />
   );
   const input = getByPlaceholderText(/Search.../i);
   expect(input).toBeTruthy();

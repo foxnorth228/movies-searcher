@@ -1,12 +1,12 @@
 import React from 'react';
-import './style.css';
+import * as styled from './styled';
 
 const Logo = () => {
   return (
-    <section className="logo">
-      <i className="logo__icon"></i>
+    <styled.Logo>
+      <styled.Logo__icon></styled.Logo__icon>
       <h1>ModsenFilms</h1>
-    </section>
+    </styled.Logo>
   );
 };
 

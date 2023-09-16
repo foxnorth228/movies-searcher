@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 interface Options {
   threshold: number;
@@ -8,10 +8,10 @@ const useElementOnScreen = (options: Options): [React.RefObject<HTMLDivElement>,
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const makeAppearRepeating = (entries: IntersectionObserverEntry[]) => {
+  const makeAppearRepeating = useCallback((entries: IntersectionObserverEntry[]) => {
     const [entry] = entries;
     setIsVisible(entry.isIntersecting);
-  };
+  }, []);
 
   useEffect(() => {
     const containerRefCurrent = containerRef.current;

@@ -1,22 +1,21 @@
 import React from 'react';
-import './style.css';
+import * as styled from './styled';
 
 interface IButtonShowMore {
-  style: object;
+  display: string;
   moveNextPage: () => void;
 }
 
-const ButtonShowMore = ({ style, moveNextPage }: IButtonShowMore) => {
+const ButtonShowMore = ({ display, moveNextPage }: IButtonShowMore) => {
   return (
-    <button
+    <styled.ButtonShowMore
       onClick={() => {
         moveNextPage();
       }}
-      style={style}
-      className="button__showMore"
+      $display={display}
     >
       Show more
-    </button>
+    </styled.ButtonShowMore>
   );
 };
 

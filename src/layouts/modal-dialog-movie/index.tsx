@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './style.css';
+import * as styled from './styled';
 import { useSelectedMovie } from '@store/moviesSlice';
 import MovieFallback from '@src/layouts/modal-dialog-movie/fallback';
 import useMatchMedia from '@hooks/use-match-media';
@@ -44,33 +44,29 @@ const ModalDialogMovie = () => {
   urlParams.append('autoplay', 'false');
   urlParams.append('width', String(width));
   return (
-    <section onClick={() => setSelectedMovie('')} className="modalDialogMovie">
-      <article
-        style={{ width: width, height: (width / 4) * 3 }}
-        className="modalDialogMovie__content"
-      >
+    <styled.ModalDialogMovie onClick={() => setSelectedMovie('')}>
+      <styled.ModalDialogMovie__Content $width={width}>
         {!isLoadedFrame && typeof movie === 'string' && <MovieFallback />}
         {typeof movie === 'string' ? (
-          <iframe
-            style={{ width: width, height: (width / 4) * 3 }}
-            className="modalDialogMovie__video"
+          <styled.ModalDialogMovie__Video
+            $width={width}
             src={String(movie) + '?' + urlParams.toString()}
             width="640"
             height="480"
             allowFullScreen={true}
             scrolling="no"
             onLoad={() => setIsLoadedFrame(true)}
-          ></iframe>
+          ></styled.ModalDialogMovie__Video>
         ) : (
-          <h1 className="modalDialogMovie__errorMessage">
+          <styled.ModalDialogMovie__ErrorMessage>
             {'Video is not available: '}
             {notNullTrailer &&
               'errorMessage' in notNullTrailer &&
               (notNullTrailer['errorMessage'] as string)}
-          </h1>
+          </styled.ModalDialogMovie__ErrorMessage>
         )}
-      </article>
-    </section>
+      </styled.ModalDialogMovie__Content>
+    </styled.ModalDialogMovie>
   );
 };
 

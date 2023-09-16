@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import './style.css';
+import * as styled from './styled';
 import { useSearchMovie } from '@store/moviesSlice';
+import { RuleSet } from 'styled-components';
 
 interface ISearcher {
-  className: string;
+  className: RuleSet<object>;
 }
 
 const Searcher = ({ className }: ISearcher) => {
@@ -13,27 +14,25 @@ const Searcher = ({ className }: ISearcher) => {
     setSearchWord(value);
   }, [setSearchWord, value]);
   return (
-    <article className={`searcher ${className}`}>
-      <input
+    <styled.Searcher $class={className}>
+      <styled.Searcher__Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
         name="title_movie"
         id="search"
         placeholder="Search..."
-        className="searcher__input"
         onKeyUp={(e) => {
           if (e.key === 'Enter') {
             submit();
           }
         }}
       />
-      <label
+      <styled.Searcher__Icon
         data-testid="searcher-label"
         onClick={() => submit()}
         htmlFor="search"
-        className="searcher__icon"
-      ></label>
-    </article>
+      ></styled.Searcher__Icon>
+    </styled.Searcher>
   );
 };
 

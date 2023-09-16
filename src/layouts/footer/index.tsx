@@ -1,29 +1,29 @@
 import React from 'react';
-import './style.css';
+import * as styled from './styled';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <section className="footer__container">
-        <article className="footer__textBlock_first">
+    <styled.Footer>
+      <styled.Footer__Container>
+        <styled.Footer__TextBlock__First>
           <p>TermsPrivacyPolicy & Safety</p>
           <p>How YouTube works</p>
           <p>Test new features</p>
-        </article>
-        <article className="footer__textBlock_second">
+        </styled.Footer__TextBlock__First>
+        <styled.Footer__TextBlock__Second>
           <p>About Press Copyright</p>
           <p>Contact us Creators</p>
           <p>Advertise Developers</p>
-        </article>
-        <article className="footer__icons">
+        </styled.Footer__TextBlock__Second>
+        <styled.Footer__Icons>
           <i style={{ backgroundImage: "url('./icon-facebook.svg')" }}></i>
           <i style={{ backgroundImage: "url('./icon-twitter.svg')" }}></i>
           <i style={{ backgroundImage: "url('./icon-instagram.svg')" }}></i>
           <i style={{ backgroundImage: "url('./icon-linkedin.svg')" }}></i>
-        </article>
-      </section>
-      <h2 className="footer__title">2023 Modsen company</h2>
-    </footer>
+        </styled.Footer__Icons>
+      </styled.Footer__Container>
+      <styled.Footer__Title>2023 Modsen company</styled.Footer__Title>
+    </styled.Footer>
   );
 };
 

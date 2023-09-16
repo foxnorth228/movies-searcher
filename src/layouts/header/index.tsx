@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import * as styled from './styled';
 import Logo from '@components/logo';
 import Searcher from '@components/searcher';
 import SwitcherTheme from '@components/switcher-theme';
@@ -7,14 +7,14 @@ import SelectorGenre from '@components/selector-genre';
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="header__content">
+    <styled.Header>
+      <styled.Header__Content>
         <Logo />
-        <Searcher className="header__mobile_down" />
+        <Searcher className={styled.Header__Mobile_Down} />
         <SwitcherTheme />
-      </div>
+      </styled.Header__Content>
       <SelectorGenre />
-    </header>
+    </styled.Header>
   );
 };
 

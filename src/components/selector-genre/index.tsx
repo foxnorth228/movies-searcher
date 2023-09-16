@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import * as styled from './styled';
 import { useGenreMovie } from '@store/moviesSlice';
 
 const SelectorGenre = () => {
@@ -14,24 +14,23 @@ const SelectorGenre = () => {
     documentary: 'Documentary',
   };
   return (
-    <section className="selectorGenre">
+    <styled.SelectorGenre>
       {Object.entries(genres).map((el, i) => (
-        <div className="selectorGenre__element" key={i}>
-          <input
+        <styled.SelectorGenre__element key={i}>
+          <styled.SelectorGenre__radio
             type="radio"
             name="selectorGenre"
             value={el[1]}
             defaultChecked={i === 0}
             id={`selectorGenre__radio_${el[0]}`}
-            className="selectorGenre__radio"
             onChange={(e) => setGenre(e.target.value)}
           />
-          <label htmlFor={`selectorGenre__radio_${el[0]}`} className="selectorGenre__label">
+          <styled.SelectorGenre__label htmlFor={`selectorGenre__radio_${el[0]}`}>
             {el[0]}
-          </label>
-        </div>
+          </styled.SelectorGenre__label>
+        </styled.SelectorGenre__element>
       ))}
-    </section>
+    </styled.SelectorGenre>
   );
 };
 

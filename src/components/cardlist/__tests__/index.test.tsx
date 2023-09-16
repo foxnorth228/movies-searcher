@@ -1,6 +1,6 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup, fireEvent, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent } from '@testing-library/react';
 import CardList from '@components/cardlist';
 import renderWithStore from '@utils/renderWithStore';
 import { expect } from '@jest/globals';
@@ -10,7 +10,7 @@ import { act } from 'react-test-renderer';
 afterEach(cleanup);
 
 test('Logo test', async () => {
-  const { getAllByText, getByText } = renderWithStore(<CardList />);
+  const { getByText } = renderWithStore(<CardList />);
   let button = getByText(/show more/i);
   expect(button).toBeTruthy();
   fireEvent.click(button);

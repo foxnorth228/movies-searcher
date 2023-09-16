@@ -1,12 +1,13 @@
 import React from 'react';
+import * as styled from './styled';
 
 const CardFallback = () => {
   return (
-    <article className="card__fallback">
-      <div className="card__fallback_image skeleton"></div>
-      <p className="card__fallback_text skeleton">skeleton loader</p>
-      <p className="card__fallback_text skeleton">skeleton loader</p>
-    </article>
+    <styled.Card__Fallback>
+      <styled.Card__Fallback_Image></styled.Card__Fallback_Image>
+      <styled.Card__Fallback_Text>skeleton loader</styled.Card__Fallback_Text>
+      <styled.Card__Fallback_Text>skeleton loader</styled.Card__Fallback_Text>
+    </styled.Card__Fallback>
   );
 };
 

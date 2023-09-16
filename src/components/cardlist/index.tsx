@@ -1,4 +1,4 @@
-import './style.css';
+import * as styled from './styled';
 import React, { useCallback, useEffect, useState } from 'react';
 import Card from '@components/card';
 import ButtonShowMore from '@components/button-show-more';
@@ -62,16 +62,18 @@ const CardList = () => {
       : '';
 
   return (
-    <section className="cardList">
-      <section className="cardList__container">
+    <styled.CardList>
+      <styled.CardList__Container>
         {moviesIds.length !== 0 ? (
           moviesIds.map((el, i) => <Card key={i} info={el} />)
         ) : (
-          <p className="cardList__fallback">There are no movies suitable for your needs</p>
+          <styled.CardList__Fallback>
+            There are no movies suitable for your needs
+          </styled.CardList__Fallback>
         )}
-      </section>
-      <ButtonShowMore style={{ display: buttonDisplay }} moveNextPage={moveNextPage} />
-    </section>
+      </styled.CardList__Container>
+      <ButtonShowMore display={buttonDisplay} moveNextPage={moveNextPage} />
+    </styled.CardList>
   );
 };
 

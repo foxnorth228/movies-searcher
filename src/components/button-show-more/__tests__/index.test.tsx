@@ -10,7 +10,7 @@ test('ButtonShowMore test', () => {
   let count = 0;
   const { getByText } = render(
     <ButtonShowMore
-      style={{}}
+      display="block"
       moveNextPage={() => {
         count += 1;
       }}

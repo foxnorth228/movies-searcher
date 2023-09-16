@@ -10,7 +10,9 @@ import { act } from 'react-test-renderer';
 afterEach(cleanup);
 
 test('Logo test', async () => {
-  const { rerender, getByText, getByAltText, queryAllByText } = renderWithStore(<Card info={{ id: 'skip' }} />);
+  const { rerender, getByText, getByAltText, queryAllByText } = renderWithStore(
+    <Card info={{ id: 'skip' }} />
+  );
   const skeleton = queryAllByText(/skeleton loader/i);
   expect(skeleton.length).toBeTruthy();
   rerender(wrapProvider(<Card info={{ id: 'test' }} />));

@@ -1,4 +1,4 @@
-import './style.css';
+import * as styled from './styled';
 import React, { useEffect, useState } from 'react';
 import { useIdToMovies, useMovies, useSelectedMovie } from '@store/moviesSlice';
 import CardFallback from './fallback';
@@ -33,33 +33,24 @@ const Card = ({ info: { id } }: ICard) => {
   }, [id, movies]);
 
   return (
-    <article
-      ref={containerRef}
-      style={{ opacity: isVisible ? 1 : 0 }}
-      className="card render-animation"
-    >
+    <styled.Card ref={containerRef} $isVisible={isVisible}>
       {id === 'skip' || !isLoadedImage ? <CardFallback /> : null}
       {id !== 'skip' && (
-        <div
-          className="card__content"
-          style={{ display: isLoadedImage ? '' : 'none' }}
-          onClick={() => setSelectedMovie(id)}
-        >
-          <img
-            className="card__image"
+        <styled.Card__Content $isLoadedImage={isLoadedImage} onClick={() => setSelectedMovie(id)}>
+          <styled.Card__Image
             src={cardInfo.image}
             alt="movie-image"
             onLoad={() => {
               setIsLoadImage(true);
             }}
           />
-          <h3 className="card__title">{cardInfo.title}</h3>
-          <span className="card__description">{cardInfo.directors}</span>
-          <span className="card__description">•</span>
-          <span className="card__description">{cardInfo.year}</span>
-        </div>
+          <styled.Card__Title>{cardInfo.title}</styled.Card__Title>
+          <styled.Card__Description>{cardInfo.directors}</styled.Card__Description>
+          <styled.Card__Description>•</styled.Card__Description>
+          <styled.Card__Description>{cardInfo.year}</styled.Card__Description>
+        </styled.Card__Content>
       )}
-    </article>
+    </styled.Card>
   );
 };
 
