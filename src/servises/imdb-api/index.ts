@@ -11,7 +11,7 @@ interface ISearchResponse {
 
 export const imdbApi = createApi({
   reducerPath: 'imdbApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.DOMAIN_URL }),
   endpoints: (builder) => ({
     getMovies: builder.query<IMovie[], { count: number; title: string; genre: string }>({
       async queryFn(args, __, ___, fetchWithBQ) {

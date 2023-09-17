@@ -21,6 +21,30 @@ export const useGenreMovie = () => {
   ] as [string, (str: string) => void];
 };
 
+interface IMovie {
+  title?: string;
+  genre?: string;
+}
+export const useFilteredMovies = (template: IMovie) => {
+  const movies = useSelector((state: RootState) => state.movies.value);
+  return Object.values(movies).filter((el) => {
+    const templateEntries = Object.entries(template);
+    const elObj = el as object;
+    for (let i = 0; i < templateEntries.length; ++i) {
+      if (
+        !(
+          templateEntries[i][0] in elObj &&
+          templateEntries[i][1] !== '' &&
+          new RegExp(templateEntries[i][1]).test(elObj[templateEntries[i][0] as keyof typeof elObj])
+        )
+      ) {
+        return false;
+      }
+    }
+    return true;
+  });
+};
+
 export const useMovies = () => {
   return useSelector((state: RootState) => state.movies.value);
 };
