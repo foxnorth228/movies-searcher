@@ -27,22 +27,30 @@ interface IMovie {
 }
 export const useFilteredMovies = (template: IMovie) => {
   const movies = useSelector((state: RootState) => state.movies.value);
-  return Object.values(movies).filter((el) => {
-    const templateEntries = Object.entries(template);
-    const elObj = el as object;
-    for (let i = 0; i < templateEntries.length; ++i) {
-      if (
-        !(
-          templateEntries[i][0] in elObj &&
-          templateEntries[i][1] !== '' &&
-          new RegExp(templateEntries[i][1]).test(elObj[templateEntries[i][0] as keyof typeof elObj])
-        )
-      ) {
-        return false;
+  return Object.values(movies)
+    .filter((el) => {
+      const templateEntries = Object.entries(template);
+      const elObj = el as object;
+      for (let i = 0; i < templateEntries.length; ++i) {
+        if (
+          !(
+            templateEntries[i][0] in elObj &&
+            templateEntries[i][1] !== '' &&
+            new RegExp(templateEntries[i][1]).test(
+              elObj[templateEntries[i][0] as keyof typeof elObj]
+            )
+          )
+        ) {
+          return false;
+        }
       }
-    }
-    return true;
-  });
+      return true;
+    })
+    .map((el) => {
+      const elObj = el as object;
+      const templateKeys = Object.keys(template);
+      return Object.fromEntries(Object.entries(elObj).filter((pairs) => pairs[0] in templateKeys));
+    });
 };
 
 export const useMovies = () => {
