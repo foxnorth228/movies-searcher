@@ -5,7 +5,7 @@ import { useToggleTheme } from '@store/themeSlice';
 const SwitcherTheme = () => {
   const [theme, setTheme] = useToggleTheme();
   return (
-    <styled.Switcher>
+    <styled.Switcher id="switcher-theme">
       <styled.Switcher__Input
         value="theme"
         checked={theme === 'dark'}

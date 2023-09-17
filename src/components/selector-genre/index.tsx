@@ -3,7 +3,7 @@ import * as styled from './styled';
 import { useGenreMovie } from '@store/moviesSlice';
 
 const SelectorGenre = () => {
-  const [, setGenre] = useGenreMovie();
+  const [genre, setGenre] = useGenreMovie();
   const genres = {
     All: '',
     action: 'Action',
@@ -14,14 +14,14 @@ const SelectorGenre = () => {
     documentary: 'Documentary',
   };
   return (
-    <styled.SelectorGenre>
+    <styled.SelectorGenre data-testid="selector-genre">
       {Object.entries(genres).map((el, i) => (
         <styled.SelectorGenre__element key={i}>
           <styled.SelectorGenre__radio
             type="radio"
             name="selectorGenre"
             value={el[1]}
-            defaultChecked={i === 0}
+            checked={genre === el[1]}
             id={`selectorGenre__radio_${el[0]}`}
             onChange={(e) => setGenre(e.target.value)}
           />

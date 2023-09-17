@@ -44,7 +44,7 @@ const ModalDialogMovie = () => {
   urlParams.append('autoplay', 'false');
   urlParams.append('width', String(width));
   return (
-    <styled.ModalDialogMovie onClick={() => setSelectedMovie('')}>
+    <styled.ModalDialogMovie data-testid="modal-dialog-movie" onClick={() => setSelectedMovie('')}>
       <styled.ModalDialogMovie__Content $width={width}>
         {!isLoadedFrame && typeof movie === 'string' && <MovieFallback />}
         {typeof movie === 'string' ? (

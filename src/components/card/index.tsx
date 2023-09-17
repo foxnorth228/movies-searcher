@@ -33,7 +33,7 @@ const Card = ({ info: { id } }: ICard) => {
   }, [id, movies]);
 
   return (
-    <styled.Card ref={containerRef} $isVisible={isVisible}>
+    <styled.Card data-testid="card" ref={containerRef} $isVisible={isVisible}>
       {id === 'skip' || !isLoadedImage ? <CardFallback /> : null}
       {id !== 'skip' && (
         <styled.Card__Content $isLoadedImage={isLoadedImage} onClick={() => setSelectedMovie(id)}>
