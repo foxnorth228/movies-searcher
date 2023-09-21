@@ -41,21 +41,9 @@ export const Footer__TextBlock__Second = styled.article`
 export const Footer__Icons = styled.article`
   grid-column: 5 / span 1;
   display: flex;
-  & > i {
-    display: block;
-    width: 17px;
-    height: 16px;
-    margin-right: 27px;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
   @media screen and (max-width: 768px) {
     justify-self: end;
     grid-column: 3 / span 1;
-    & > i {
-      margin-right: 1rem;
-    }
   }
   @media screen and (max-width: 600px) {
     display: flex;

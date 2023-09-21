@@ -1,7 +1,14 @@
 import React from 'react';
 import * as styled from './styled';
+import FooterIcon from '@components/FooterIcon';
 
 const Footer = () => {
+  const images = [
+    ['./icon-facebook.svg', 'https://www.facebook.com/'],
+    ['./icon-twitter.svg', 'https://twitter.com/'],
+    ['./icon-instagram.svg', 'https://www.instagram.com/'],
+    ['./icon-linkedin.svg', 'https://www.linkedin.com/'],
+  ];
   return (
     <styled.Footer>
       <styled.Footer__Container>
@@ -16,10 +23,9 @@ const Footer = () => {
           <p>Advertise Developers</p>
         </styled.Footer__TextBlock__Second>
         <styled.Footer__Icons>
-          <i style={{ backgroundImage: "url('./icon-facebook.svg')" }}></i>
-          <i style={{ backgroundImage: "url('./icon-twitter.svg')" }}></i>
-          <i style={{ backgroundImage: "url('./icon-instagram.svg')" }}></i>
-          <i style={{ backgroundImage: "url('./icon-linkedin.svg')" }}></i>
+          {images.map((el, i) => (
+            <FooterIcon key={i} image={el[0]} link={el[1]} />
+          ))}
         </styled.Footer__Icons>
       </styled.Footer__Container>
       <styled.Footer__Title>2023 Modsen company</styled.Footer__Title>
