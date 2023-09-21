@@ -6,7 +6,7 @@ import Header from '@src/layouts/header';
 import Main from '@src/layouts/main';
 import ModalDialogMovie from '@src/layouts/modal-dialog-movie';
 import { useSelectedMovie } from '@store/moviesSlice';
-import { useToggleTheme } from '@store/themeSlice';
+import { useToggleTheme } from '@store/themeSlice/hooks';
 import React, { useEffect } from 'react';
 
 const App = () => {

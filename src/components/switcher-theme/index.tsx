@@ -1,4 +1,4 @@
-import { useToggleTheme } from '@store/themeSlice';
+import { useToggleTheme } from '@store/themeSlice/hooks';
 import React from 'react';
 
 import * as styled from './styled';
