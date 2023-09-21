@@ -1,11 +1,12 @@
-import * as styled from './styled';
-import React, { useCallback, useEffect, useState } from 'react';
-import Card from '@components/card';
 import ButtonShowMore from '@components/button-show-more';
-import { useGetMoviesQuery, IMovie } from '@src/servises/imdb-api';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { useGenreMovie, useSearchMovie } from '@store/moviesSlice';
+import Card from '@components/card';
 import useMatchMedia from '@hooks/use-match-media';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { IMovie, useGetMoviesQuery } from '@src/servises/imdb-api';
+import { useGenreMovie, useSearchMovie } from '@store/moviesSlice';
+import React, { useCallback, useEffect, useState } from 'react';
+
+import * as styled from './styled';
 
 const CardList = () => {
   const mediaMatch = useMatchMedia('(max-width: 768px)');

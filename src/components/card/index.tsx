@@ -1,9 +1,10 @@
-import * as styled from './styled';
-import React, { useEffect, useState } from 'react';
-import { useIdToMovies, useMovies, useSelectedMovie } from '@store/moviesSlice';
-import CardFallback from './fallback';
-import { IMovie } from '@src/servises/imdb-api';
 import useElementOnScreen from '@hooks/use-element-on-screen';
+import { IMovie } from '@src/servises/imdb-api';
+import { useIdToMovies, useMovies, useSelectedMovie } from '@store/moviesSlice';
+import React, { useEffect, useState } from 'react';
+
+import CardFallback from './fallback';
+import * as styled from './styled';
 
 interface ICard {
   info: IMovie;

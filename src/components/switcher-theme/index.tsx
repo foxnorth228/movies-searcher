@@ -1,6 +1,7 @@
-import React from 'react';
-import * as styled from './styled';
 import { useToggleTheme } from '@store/themeSlice';
+import React from 'react';
+
+import * as styled from './styled';
 
 const SwitcherTheme = () => {
   const [theme, setTheme] = useToggleTheme();

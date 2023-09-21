@@ -1,6 +1,7 @@
-import React from 'react';
-import * as styled from './styled';
 import FooterIcon from '@components/FooterIcon';
+import React from 'react';
+
+import * as styled from './styled';
 
 const Footer = () => {
   const images = [

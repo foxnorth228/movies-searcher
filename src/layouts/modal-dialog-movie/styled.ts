@@ -1,5 +1,5 @@
-import { styled } from 'styled-components';
 import Skeleton from '@utils/styled-skeleton';
+import { styled } from 'styled-components';
 
 export const ModalDialogMovie = styled.section`
   width: 100vw;

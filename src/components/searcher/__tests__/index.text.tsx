@@ -1,9 +1,10 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup, fireEvent } from '@testing-library/react';
+
 import Searcher from '@components/searcher';
 import { expect } from '@jest/globals';
+import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
+import React from 'react';
 import { css } from 'styled-components';
 
 afterEach(cleanup);

@@ -1,7 +1,8 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup, render } from '@testing-library/react';
+
 import Footer from '@src/layouts/footer';
+import { cleanup, render } from '@testing-library/react';
+import React from 'react';
 
 afterEach(cleanup);
 

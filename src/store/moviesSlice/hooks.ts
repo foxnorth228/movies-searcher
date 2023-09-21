@@ -1,9 +1,10 @@
-import { RootState } from '@src/store';
-import { useGetInfoQuery } from '@src/servises/imdb-api';
-import { setGenre, setSearchWord, setSelectedMovie } from './index';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { useGetInfoQuery } from '@src/servises/imdb-api';
+import { RootState } from '@src/store';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setGenre, setSearchWord, setSelectedMovie } from './index';
 
 export const useSearchMovie = () => {
   const dispatch = useDispatch();

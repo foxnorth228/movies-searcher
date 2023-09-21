@@ -1,10 +1,11 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup, fireEvent, waitFor } from '@testing-library/react';
+
 import Card from '@components/card';
-import renderWithStore, { wrapProvider } from '@utils/renderWithStore';
 import { expect } from '@jest/globals';
+import { cleanup, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import renderWithStore, { wrapProvider } from '@utils/renderWithStore';
+import React from 'react';
 import { act } from 'react-test-renderer';
 
 afterEach(cleanup);

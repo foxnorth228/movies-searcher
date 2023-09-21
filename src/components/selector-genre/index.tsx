@@ -1,6 +1,7 @@
-import React from 'react';
-import * as styled from './styled';
 import { useGenreMovie } from '@store/moviesSlice';
+import React from 'react';
+
+import * as styled from './styled';
 
 const SelectorGenre = () => {
   const [genre, setGenre] = useGenreMovie();

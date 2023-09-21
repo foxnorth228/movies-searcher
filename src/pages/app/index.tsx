@@ -1,12 +1,13 @@
 import './style.css';
-import React, { useEffect } from 'react';
+
+import ErrorBoundary from '@pages/app/error-boundary';
+import Footer from '@src/layouts/footer';
 import Header from '@src/layouts/header';
 import Main from '@src/layouts/main';
-import Footer from '@src/layouts/footer';
 import ModalDialogMovie from '@src/layouts/modal-dialog-movie';
-import { useToggleTheme } from '@store/themeSlice';
 import { useSelectedMovie } from '@store/moviesSlice';
-import ErrorBoundary from '@pages/app/error-boundary';
+import { useToggleTheme } from '@store/themeSlice';
+import React, { useEffect } from 'react';
 
 const App = () => {
   const [theme] = useToggleTheme();

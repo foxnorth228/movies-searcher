@@ -1,9 +1,10 @@
-import React from 'react';
-import * as styled from './styled';
 import Logo from '@components/logo';
 import Searcher from '@components/searcher';
-import SwitcherTheme from '@components/switcher-theme';
 import SelectorGenre from '@components/selector-genre';
+import SwitcherTheme from '@components/switcher-theme';
+import React from 'react';
+
+import * as styled from './styled';
 
 const Header = () => {
   return (

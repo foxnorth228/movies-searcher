@@ -1,8 +1,9 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup } from '@testing-library/react';
+
 import Header from '@src/layouts/header';
+import { cleanup } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
+import React from 'react';
 
 afterEach(cleanup);
 

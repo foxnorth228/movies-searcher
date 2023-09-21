@@ -1,9 +1,10 @@
-import React from 'react';
 import '@testing-library/jest-dom';
-import { cleanup, fireEvent } from '@testing-library/react';
+
 import SelectorGenre from '@components/selector-genre';
-import renderWithStore from '@utils/renderWithStore';
 import { expect } from '@jest/globals';
+import { cleanup, fireEvent } from '@testing-library/react';
+import renderWithStore from '@utils/renderWithStore';
+import React from 'react';
 
 afterEach(cleanup);
 

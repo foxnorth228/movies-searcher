@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import * as styled from './styled';
-import { useSelectedMovie } from '@store/moviesSlice';
-import MovieFallback from '@src/layouts/modal-dialog-movie/fallback';
 import useMatchMedia from '@hooks/use-match-media';
+import MovieFallback from '@src/layouts/modal-dialog-movie/fallback';
+import { useSelectedMovie } from '@store/moviesSlice';
+import React, { useEffect, useState } from 'react';
+
+import * as styled from './styled';
 
 const ModalDialogMovie = () => {
   const [selectedMovie, setSelectedMovie] = useSelectedMovie();

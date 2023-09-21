@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
-import * as styled from './styled';
 import { useSearchMovie } from '@store/moviesSlice';
+import React, { useCallback, useState } from 'react';
 import { RuleSet } from 'styled-components';
+
+import * as styled from './styled';
 
 interface ISearcher {
   className: RuleSet<object>;
