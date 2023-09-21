@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import globalConfig from '@constants/global.config';
 
 export interface IMovie {
   id: string;
@@ -11,11 +12,11 @@ interface ISearchResponse {
 
 export const imdbApi = createApi({
   reducerPath: 'imdbApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.DOMAIN_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: globalConfig.DOMAIN_URL }),
   endpoints: (builder) => ({
     getMovies: builder.query<IMovie[], { count: number; title: string; genre: string }>({
       async queryFn(args, __, ___, fetchWithBQ) {
-        const apiKey = process.env.API_KEY ?? '';
+        const apiKey = globalConfig.API_KEY ?? '';
         const urlParams = new URLSearchParams();
         urlParams.append('title_type', 'tv_movie');
         urlParams.append('count', String(args.count));
@@ -50,7 +51,7 @@ export const imdbApi = createApi({
       },
     }),
     getInfo: builder.query<object, string>({
-      query: (name: string) => `/Title/${process.env.API_KEY ?? 'key'}/${name}/Trailer,`,
+      query: (name: string) => `/Title/${globalConfig.API_KEY ?? 'key'}/${name}/Trailer,`,
     }),
   }),
 });
