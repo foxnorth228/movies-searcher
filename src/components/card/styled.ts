@@ -1,22 +1,24 @@
 import { styled } from 'styled-components';
 import Skeleton from '@utils/styled-skeleton';
 
-export const Card = styled.article<{ $isVisible: boolean }>`
-  display: flex;
+export const Card = styled.article`
   position: relative;
   width: 100%;
   max-width: 15rem;
   min-height: 15rem;
-  transition: opacity 1s linear;
-  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
 `;
 
-export const Card__Content = styled.div<{ $isLoadedImage: boolean }>`
-  display: ${(props) => (props.$isLoadedImage ? '' : 'none')};
+export const Card__Content = styled.div<{ $isVisible: boolean; $isLoadedImage: boolean }>`
+  display: ${(props) => (props.$isLoadedImage ? 'flex' : 'none')};
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
-  height: fit-content;
+  height: 100%;
   padding: 0.3rem;
-  transition: box-shadow 0.2s linear;
+  transition:
+    box-shadow 0.2s linear,
+    opacity 1s linear;
+  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 10px 0 var(--card-box-shadow);
@@ -33,6 +35,10 @@ export const Card__Title = styled.h3`
   font-size: 0.9rem;
   font-weight: 400;
   margin: 1.25rem 0 0;
+`;
+
+export const Card__DescriptionBlock = styled.div`
+  display: block;
 `;
 
 export const Card__Description = styled.span`

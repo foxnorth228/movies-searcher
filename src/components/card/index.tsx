@@ -33,10 +33,15 @@ const Card = ({ info: { id } }: ICard) => {
   }, [id, movies]);
 
   return (
-    <styled.Card data-testid="card" ref={containerRef} $isVisible={isVisible}>
+    <styled.Card data-testid="card">
       {id === 'skip' || !isLoadedImage ? <CardFallback /> : null}
       {id !== 'skip' && (
-        <styled.Card__Content $isLoadedImage={isLoadedImage} onClick={() => setSelectedMovie(id)}>
+        <styled.Card__Content
+          ref={containerRef}
+          $isVisible={isVisible}
+          $isLoadedImage={isLoadedImage}
+          onClick={() => setSelectedMovie(id)}
+        >
           <styled.Card__Image
             src={cardInfo.image}
             alt="movie-image"
@@ -44,10 +49,12 @@ const Card = ({ info: { id } }: ICard) => {
               setIsLoadImage(true);
             }}
           />
-          <styled.Card__Title>{cardInfo.title}</styled.Card__Title>
-          <styled.Card__Description>{cardInfo.directors}</styled.Card__Description>
-          <styled.Card__Description>•</styled.Card__Description>
-          <styled.Card__Description>{cardInfo.year}</styled.Card__Description>
+          <styled.Card__DescriptionBlock>
+            <styled.Card__Title>{cardInfo.title}</styled.Card__Title>
+            <styled.Card__Description>{cardInfo.directors}</styled.Card__Description>
+            <styled.Card__Description>•</styled.Card__Description>
+            <styled.Card__Description>{cardInfo.year}</styled.Card__Description>
+          </styled.Card__DescriptionBlock>
         </styled.Card__Content>
       )}
     </styled.Card>
