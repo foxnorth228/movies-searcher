@@ -4,6 +4,7 @@ import { jest } from '@jest/globals';
 import { fetch, Headers, Request, Response } from 'cross-fetch';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
+import globalConfig from '@constants/global.config';
 
 global.fetch = fetch;
 global.Headers = Headers;
@@ -11,7 +12,10 @@ global.Request = Request;
 global.Response = Response;
 
 export const handlers = [
-  rest.get('http://localhost/AdvancedSearch/*', (req, res, ctx) => {
+  rest.get(globalConfig.DOMAIN_URL, () => {
+    console.log('xxx');
+  }),
+  rest.get(`${globalConfig.DOMAIN_URL}/AdvancedSearch/*`, (req, res, ctx) => {
     const count = req.url.searchParams.get('count');
     const num = parseInt(count ?? '') ?? 250;
     if (num === 3 * 16) {
@@ -31,7 +35,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get('http://localhost/Title/key/:movieId/*', (req, res, ctx) => {
+  rest.get(`${globalConfig.DOMAIN_URL}/Title/:key/:movieId/*`, (req, res, ctx) => {
     const { movieId } = req.params;
     const num = movieId.slice(4);
     return res(
@@ -45,7 +49,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get('https://imdb-api.com/en/API', (_req, res, ctx) => {
+  rest.get(globalConfig.DOMAIN_URL, (_req, res, ctx) => {
     return res(ctx.json('{}'));
   }),
 ];

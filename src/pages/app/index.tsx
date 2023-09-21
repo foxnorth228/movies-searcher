@@ -1,5 +1,3 @@
-import './style.css';
-
 import ErrorBoundary from '@components/ErrorBoundary';
 import Footer from '@src/layouts/footer';
 import Header from '@src/layouts/header';
@@ -8,6 +6,8 @@ import ModalDialogMovie from '@src/layouts/modal-dialog-movie';
 import { useSelectedMovie } from '@store/moviesSlice';
 import { useToggleTheme } from '@store/themeSlice/hooks';
 import React, { useEffect } from 'react';
+
+import * as styled from './styled';
 
 const App = () => {
   const [theme] = useToggleTheme();
@@ -23,12 +23,15 @@ const App = () => {
   }, [theme]);
 
   return (
-    <ErrorBoundary>
-      {Object.keys(selectedMovie).length !== 0 && <ModalDialogMovie />}
-      <Header />
-      <Main />
-      <Footer />
-    </ErrorBoundary>
+    <>
+      <styled.globalStyle />
+      <ErrorBoundary>
+        {Object.keys(selectedMovie).length !== 0 && <ModalDialogMovie />}
+        <Header />
+        <Main />
+        <Footer />
+      </ErrorBoundary>
+    </>
   );
 };
 

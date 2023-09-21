@@ -1,4 +1,7 @@
-:root {
+import { createGlobalStyle, styled } from 'styled-components';
+
+export const globalStyle = createGlobalStyle`
+  :root {
     --background: white;
     --text: black;
     --footer-title: #8a8a8a;
@@ -12,9 +15,9 @@
     --selector-genre-selected: black;
     --selector-genre-selected-text: white;
     --card-box-shadow: #6b6b6b;
-}
+  }
 
-.light-theme {
+  .light-theme {
     --background: white;
     --text: black;
     --footer-title: #8a8a8a;
@@ -28,9 +31,9 @@
     --selector-genre-selected: black;
     --selector-genre-selected-text: white;
     --card-box-shadow: #6b6b6b;
-}
+  }
 
-.dark-theme {
+  .dark-theme {
     --background: black;
     --text: white;
     --footer-title: #c2c2c2;
@@ -44,23 +47,23 @@
     --selector-genre-selected: #131313;
     --selector-genre-selected-text: white;
     --card-box-shadow: #ffffff;
-}
-
-body {
+  }
+  
+  body {
     background: var(--background, white);
-}
+  }
 
-label, span, p, div, h1, h2, h3, h4, h5, h6 {
+  label, span, p, div, h1, h2, h3, h4, h5, h6 {
     color: var(--text);
-}
+  }
 
-*,
-:after,
-:before {
+  *,
+  :after,
+  :before {
     transition: color 0.3s linear, background-color 0.3s linear;
-}
+  }
 
-.errorBoundary {
+  .errorBoundary {
     position: fixed;
     left: 0;
     top: 0;
@@ -68,4 +71,54 @@ label, span, p, div, h1, h2, h3, h4, h5, h6 {
     height: 100vh;
     background-color: var(--background, white);
     color: var(--text, black);
-}
+  }
+
+  html {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1280px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 991px) {
+    html {
+      font-size: 17px;
+    }
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 600px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  body {
+    margin: 0;
+  }
+
+  :root {
+    box-sizing: border-box;
+  }
+
+  *,
+  :after,
+  :before {
+    box-sizing: inherit;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
+  }
+`;

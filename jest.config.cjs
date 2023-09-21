@@ -10,6 +10,7 @@ module.exports = {
     "^@src(.*)$": "<rootDir>/src$1",
     "^@assets(.*)$": "<rootDir>/src/assets$1",
     "^@components(.*)$": "<rootDir>/src/components$1",
+    "^@constants(.*)$": "<rootDir>/src/constants$1",
     "^@hooks(.*)$": "<rootDir>/src/hooks$1",
     "^@pages(.*)$": "<rootDir>/src/pages$1",
     "^@store(.*)$": "<rootDir>/src/store$1",

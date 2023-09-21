@@ -1,5 +1,3 @@
-import './style.css';
-
 import App from '@pages/app';
 import { store } from '@src/store';
 import React from 'react';
