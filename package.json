@@ -6,8 +6,8 @@
     "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
     "test:cov": "yarn node --experimental-vm-modules $(yarn bin jest) --coverage",
     "cypress:open": "yarn run cypress open",
-    "build": "webpack --mode production",
-    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production --config webpack.prod.cjs",
+    "dev": "webpack serve --mode development --config webpack.dev.cjs",
     "lint": "npx eslint src/ --ext .ts,.tsx",
     "lint:fix": "npx eslint src/ --ext .ts,.tsx --fix"
   },
@@ -64,7 +64,8 @@
     "typescript": "5.1.6",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
   },
   "dependencies": {
     "@reduxjs/toolkit": "beta"

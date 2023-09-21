@@ -12,3 +12,7 @@
 
 .env
 coverage/*
+
+public
+!public/index.html
+!public/Group.svg
