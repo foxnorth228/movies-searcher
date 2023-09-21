@@ -1,6 +1,6 @@
 import './style.css';
 
-import ErrorBoundary from '@pages/app/error-boundary';
+import ErrorBoundary from '@components/ErrorBoundary';
 import Footer from '@src/layouts/footer';
 import Header from '@src/layouts/header';
 import Main from '@src/layouts/main';

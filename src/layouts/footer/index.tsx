@@ -1,9 +1,10 @@
 import FooterIcon from '@components/FooterIcon';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import * as styled from './styled';
 
 const Footer = () => {
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
   const images = [
     ['./icon-facebook.svg', 'https://www.facebook.com/'],
     ['./icon-twitter.svg', 'https://twitter.com/'],
@@ -29,7 +30,7 @@ const Footer = () => {
           ))}
         </styled.Footer__Icons>
       </styled.Footer__Container>
-      <styled.Footer__Title>2023 Modsen company</styled.Footer__Title>
+      <styled.Footer__Title>{currentYear} Modsen company</styled.Footer__Title>
     </styled.Footer>
   );
 };
