@@ -1,10 +1,10 @@
-import ButtonShowMore from '@components/button-show-more';
 import Card from '@components/card';
 import useMatchMedia from '@hooks/use-match-media';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { IMovie, useGetMoviesQuery } from '@src/servises/imdb-api';
 import { useGenreMovie, useSearchMovie } from '@store/moviesSlice';
 import React, { useCallback, useEffect, useState } from 'react';
+import ButtonShowMore from 'src/components/ButtonShowMore';
 
 import * as styled from './styled';
 

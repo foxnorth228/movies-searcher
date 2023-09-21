@@ -62,17 +62,7 @@ export const globalStyle = createGlobalStyle`
   :before {
     transition: color 0.3s linear, background-color 0.3s linear;
   }
-
-  .errorBoundary {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--background, white);
-    color: var(--text, black);
-  }
-
+  
   html {
     font-size: 20px;
   }

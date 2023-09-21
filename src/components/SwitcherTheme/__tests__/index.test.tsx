@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 
-import SwitcherTheme from '@components/switcher-theme';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
+import SwitcherTheme from 'src/components/SwitcherTheme';
 
 afterEach(cleanup);
 

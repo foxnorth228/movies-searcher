@@ -16,7 +16,7 @@ describe('Testing find title system', () => {
   });
   it('Checking alternative text', () => {
     cy.get('#search').type('tytytytytytytytyttty');
-    cy.get('[data-testid=searcher-label]').click();
+    cy.get('[data-testid=Searcher-label]').click();
     cy.contains(/There are no movies suitable for your needs/i, { timeout: 10000 });
   })
 });

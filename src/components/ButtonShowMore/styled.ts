@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const ButtonShowMore = styled.button<{ $display: string }>`
+export const buttonShowMore = styled.button<{ $display: string }>`
   display: ${(props) => (props.$display !== '' ? props.$display : 'block')};
   margin: 0 auto;
   padding: 0.75rem 1.8rem;

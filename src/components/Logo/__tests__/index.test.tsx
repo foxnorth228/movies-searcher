@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 
-import Logo from '@components/logo';
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
+import Logo from 'src/components/Logo';
 
 afterEach(cleanup);
 

@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 
+import globalConfig from '@constants/global.config';
 import { jest } from '@jest/globals';
 import { fetch, Headers, Request, Response } from 'cross-fetch';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import globalConfig from '@constants/global.config';
 
 global.fetch = fetch;
 global.Headers = Headers;

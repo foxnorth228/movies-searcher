@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 
-import ButtonShowMore from '@components/button-show-more';
 import { expect } from '@jest/globals';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
+import ButtonShowMore from 'src/components/ButtonShowMore';
 
 afterEach(cleanup);
 

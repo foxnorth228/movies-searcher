@@ -1,10 +1,10 @@
-import React, { ReactNode } from 'react';
+import { IErrorBoundaryProps, IErrorBoundaryState } from '@components/ErrorBoundary/types';
+import React from 'react';
 
-class ErrorBoundary extends React.Component<
-  { children: ReactNode },
-  { hasError: boolean; errorMessage: string }
-> {
-  constructor(props: { children: ReactNode }) {
+import * as styled from './styled';
+
+class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryState> {
+  constructor(props: IErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false, errorMessage: '' };
   }
@@ -18,9 +18,9 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="errorBoundary">
-          <h1 className="errorBoundary__text">{this.state.errorMessage}</h1>
-        </div>
+        <styled.errorBoundary>
+          <h1>{this.state.errorMessage}</h1>
+        </styled.errorBoundary>
       );
     }
     return this.props.children;
