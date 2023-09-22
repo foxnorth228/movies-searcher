@@ -58,13 +58,25 @@ export const useMovies = () => {
   return useSelector((state: RootState) => state.movies.value);
 };
 
-export const useIdToMovies = (id: string, movies: object) => {
-  const { error } = useGetInfoQuery(id, { skip: id === 'skip' || id in movies });
+function createEmptyMovie() {
+  return {
+    title: '',
+    year: '',
+    image: '',
+    directors: '',
+  };
+}
+
+export const useIdToMovies = (id: string): [ReturnType<typeof createEmptyMovie>, boolean] => {
+  const movies = useMovies();
+  const isMovieStored = id in movies;
+  const { error } = useGetInfoQuery(id, { skip: id === 'skip' || isMovieStored });
   useEffect(() => {
     if (error) {
       alert('error' in error ? error.error : JSON.stringify((error as FetchBaseQueryError).data));
     }
   }, [error]);
+  return [isMovieStored ? movies[id as keyof typeof movies] : createEmptyMovie(), isMovieStored];
 };
 
 export const useSelectedMovie = () => {

@@ -1,10 +1,10 @@
-import Card from '@components/card';
-import useMatchMedia from '@hooks/use-match-media';
+import ButtonShowMore from '@components/ButtonShowMore';
+import Card from '@components/Card';
+import useMatchMedia from '@hooks/useMatchMedia';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { IMovie, useGetMoviesQuery } from '@src/servises/imdb-api';
 import { useGenreMovie, useSearchMovie } from '@store/moviesSlice';
 import React, { useCallback, useEffect, useState } from 'react';
-import ButtonShowMore from 'src/components/ButtonShowMore';
 
 import * as styled from './styled';
 
@@ -66,7 +66,7 @@ const CardList = () => {
     <styled.CardList>
       <styled.CardList__Container>
         {moviesIds.length !== 0 ? (
-          moviesIds.map((el, i) => <Card key={i} info={el} />)
+          moviesIds.map((el) => <Card key={el.id} id={el.id} />)
         ) : (
           <styled.CardList__Fallback>
             There are no movies suitable for your needs

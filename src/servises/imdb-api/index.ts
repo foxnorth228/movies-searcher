@@ -1,35 +1,29 @@
 import globalConfig from '@constants/global.config';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-export interface IMovie {
-  id: string;
-}
-
-interface ISearchResponse {
-  results: Array<IMovie>;
-  errorMessage: string;
-}
+import { prepareURLParams } from '@src/servises/imdb-api/prepareURLParams';
+import { IGetMoviesParameters, IMovie, ISearchResponse } from '@src/servises/imdb-api/types';
 
 export const imdbApi = createApi({
   reducerPath: 'imdbApi',
   baseQuery: fetchBaseQuery({ baseUrl: globalConfig.DOMAIN_URL }),
   endpoints: (builder) => ({
-    getMovies: builder.query<IMovie[], { count: number; title: string; genre: string }>({
+    getMovies: builder.query<IMovie[], IGetMoviesParameters>({
       async queryFn(args, __, ___, fetchWithBQ) {
-        const apiKey = globalConfig.API_KEY ?? '';
-        const urlParams = new URLSearchParams();
-        urlParams.append('title_type', 'tv_movie');
-        urlParams.append('count', String(args.count));
-        if (args.title !== '') {
-          urlParams.append('title', args.title);
-        }
-        if (args.genre !== '') {
-          urlParams.append('genres', args.genre);
-        }
-        const url = '/AdvancedSearch/' + apiKey + '?' + urlParams.toString();
-        const res = await fetchWithBQ(url);
+        const urlParams = prepareURLParams(args);
+        const testUrlParams = prepareURLParams({ ...args, count: args.count + 1 });
+        const arrRes = await Promise.allSettled([
+          fetchWithBQ('/AdvancedSearch/' + globalConfig.API_KEY + '?' + urlParams.toString()),
+          fetchWithBQ('/AdvancedSearch/' + globalConfig.API_KEY + '?' + testUrlParams.toString()),
+        ]);
 
-        const { data: resData, error } = res;
+        if (arrRes[0].status === 'rejected') {
+          throw arrRes[0].reason;
+        }
+        if (arrRes[1].status === 'rejected') {
+          throw arrRes[1].reason;
+        }
+
+        const { data: resData, error } = arrRes[0].value;
         const data = resData as ISearchResponse;
         if (error) {
           return { error };

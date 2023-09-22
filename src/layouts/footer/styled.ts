@@ -24,14 +24,7 @@ export const Footer__Container = styled.section`
   }
 `;
 
-export const Footer__TextBlock__First = styled.article`
-  & > p {
-    font-weight: 600;
-    margin: 0;
-  }
-`;
-
-export const Footer__TextBlock__Second = styled.article`
+export const Footer__TextBlock = styled.article`
   & > p {
     font-weight: 600;
     margin: 0;

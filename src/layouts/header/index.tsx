@@ -1,8 +1,8 @@
 import React from 'react';
-import Logo from 'src/components/Logo';
-import Searcher from 'src/components/Searcher';
-import SelectorGenre from 'src/components/SelectorGenre';
-import SwitcherTheme from 'src/components/SwitcherTheme';
+import Logo from '@components/Logo';
+import Searcher from '@components/Searcher';
+import SelectorGenre from '@components/SelectorGenre';
+import SwitcherTheme from '@components/SwitcherTheme';
 
 import * as styled from './styled';
 
