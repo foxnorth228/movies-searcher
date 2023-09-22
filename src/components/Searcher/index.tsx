@@ -1,43 +1,47 @@
-import * as config from '@components/Searcher/index.config';
+import * as config from '@components/Searcher/config';
 import { ISearcher } from '@components/Searcher/types';
 import { useSearchMovie } from '@store/moviesSlice';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import * as styled from './styled';
 
-const Searcher = ({ className }: ISearcher) => {
-  const [value, setValue] = useState('');
+const Searcher = ({ cssRule }: ISearcher) => {
+  const [inputValue, setInputValue] = useState('');
   const [, setSearchWord] = useSearchMovie();
+  const dataInput = useMemo(() => config.input, []);
 
-  const submit = useCallback(() => {
-    setSearchWord(value);
-  }, [setSearchWord, value]);
-  const inputOnKeyUp = useCallback(
+  const processInputValue = useCallback(() => {
+    setSearchWord(inputValue);
+  }, [setSearchWord, inputValue]);
+
+  const handleInputOnKeyUp = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === 'Enter') {
-        submit();
+        processInputValue();
       }
     },
-    [submit]
+    [processInputValue]
   );
-  const inputOnChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value),
+
+  const handleInputOnChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value),
     []
   );
+
   return (
-    <styled.Searcher $class={className}>
+    <styled.Searcher $class={cssRule}>
       <styled.Searcher__Input
-        value={value}
-        onChange={inputOnChange}
-        name={config.input__name}
-        id={config.input__id}
-        placeholder={config.input__placeholder}
-        onKeyUp={inputOnKeyUp}
+        value={inputValue}
+        onChange={handleInputOnChange}
+        name={dataInput.name}
+        id={dataInput.id}
+        placeholder={dataInput.placeholder}
+        onKeyUp={handleInputOnKeyUp}
       />
       <styled.Searcher__Icon
-        data-testid={config.label__data_testid}
-        onClick={submit}
-        htmlFor={config.input__id}
+        data-testid={config.labelDataTestId}
+        onClick={processInputValue}
+        htmlFor={dataInput.id}
       ></styled.Searcher__Icon>
     </styled.Searcher>
   );

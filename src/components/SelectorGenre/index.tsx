@@ -1,33 +1,34 @@
 import { useGenreMovie } from '@store/moviesSlice';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
-import * as config from './index.config';
+import * as config from './config';
 import * as styled from './styled';
 
 const SelectorGenre = () => {
   const [genre, setGenre] = useGenreMovie();
+  const dataInput = useMemo(() => config.input, []);
 
-  const radioOnChange = useCallback(
+  const handleInputOnChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => setGenre(e.target.value),
     [setGenre]
   );
 
   return (
-    <styled.SelectorGenre data-testid={config.selectorGenre__data_testid}>
+    <styled.SelectorGenre data-testid={config.selectorGenreDataTestid}>
       {Object.entries(config.genres).map((el) => (
-        <styled.SelectorGenre__element key={el[0]}>
-          <styled.SelectorGenre__radio
-            type={config.radio__type}
-            name={config.radio__name}
+        <styled.SelectorGenre__Element key={el[0]}>
+          <styled.SelectorGenre__Radio
+            type={dataInput.type}
+            name={dataInput.name}
             value={el[1]}
             checked={genre === el[1]}
-            id={config.radio__id_prefix + el[0]}
-            onChange={radioOnChange}
+            id={dataInput.idPrefix + el[0]}
+            onChange={handleInputOnChange}
           />
-          <styled.SelectorGenre__label htmlFor={config.radio__id_prefix + el[0]}>
+          <styled.SelectorGenre__Label htmlFor={dataInput.idPrefix + el[0]}>
             {el[0]}
-          </styled.SelectorGenre__label>
-        </styled.SelectorGenre__element>
+          </styled.SelectorGenre__Label>
+        </styled.SelectorGenre__Element>
       ))}
     </styled.SelectorGenre>
   );

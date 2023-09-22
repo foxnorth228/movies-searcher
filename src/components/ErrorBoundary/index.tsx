@@ -18,9 +18,9 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
   render() {
     if (this.state.hasError) {
       return (
-        <styled.errorBoundary>
+        <styled.ErrorBoundary>
           <h1>{this.state.errorMessage}</h1>
-        </styled.errorBoundary>
+        </styled.ErrorBoundary>
       );
     }
     return this.props.children;

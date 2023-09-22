@@ -11,15 +11,15 @@ export const SelectorGenre = styled.section`
   flex-wrap: wrap;
 `;
 
-export const SelectorGenre__element = styled.div`
+export const SelectorGenre__Element = styled.div`
   display: inline-flex;
 `;
 
-export const SelectorGenre__radio = styled.input`
+export const SelectorGenre__Radio = styled.input`
   display: none;
 `;
 
-export const SelectorGenre__label = styled.label`
+export const SelectorGenre__Label = styled.label`
   color: var(--selector-genre-text, black);
   padding: 0.33rem 1rem;
   background-color: var(--selector-genre, #f0f0f0);
@@ -31,7 +31,7 @@ export const SelectorGenre__label = styled.label`
     cursor: pointer;
     background-color: var(--selector-genre-hover, #d8d8d8);
   }
-  ${SelectorGenre__radio}:checked + & {
+  ${SelectorGenre__Radio}:checked + & {
     background-color: var(--selector-genre-selected, black);
     color: var(--selector-genre-selected-text, white);
   }

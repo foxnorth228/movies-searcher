@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const errorBoundary = styled.div`
+export const ErrorBoundary = styled.div`
   position: fixed;
   left: 0;
   top: 0;

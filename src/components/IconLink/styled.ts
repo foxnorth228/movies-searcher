@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const footerIcon = styled.a<{ $image: string }>`
+export const IconLink = styled.a<{ $image: string }>`
   display: block;
   width: 17px;
   height: 16px;

@@ -11,7 +11,7 @@ const Header = () => {
     <styled.Header>
       <styled.Header__Content>
         <Logo />
-        <Searcher className={styled.Header__Mobile_Down} />
+        <Searcher cssRule={styled.Header__Mobile_Down} />
         <SwitcherTheme />
       </styled.Header__Content>
       <SelectorGenre />

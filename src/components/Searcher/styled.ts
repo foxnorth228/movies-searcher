@@ -1,6 +1,7 @@
-import { RuleSet, styled } from 'styled-components';
+import { TCssRule } from '@components/Searcher/types';
+import { styled } from 'styled-components';
 
-export const Searcher = styled.article<{ $class: RuleSet<object> }>`
+export const Searcher = styled.article<{ $class: TCssRule }>`
   display: flex;
   width: 80%;
   max-width: 30rem;

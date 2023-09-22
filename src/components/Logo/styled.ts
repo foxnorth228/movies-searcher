@@ -1,13 +1,13 @@
 import { styled } from 'styled-components';
 
-export const logo = styled.section`
+export const Logo = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   justify-self: start;
 `;
 
-export const logoIcon = styled.i`
+export const Logo__Icon = styled.i`
   display: block;
   width: calc(1.5rem * 29 / 21);
   height: 1.5rem;

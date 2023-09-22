@@ -1,4 +1,4 @@
-import FooterIcon from '@components/FooterIcon';
+import IconLink from 'src/components/IconLink';
 import React, { useMemo } from 'react';
 
 import * as styled from './styled';
@@ -26,7 +26,7 @@ const Footer = () => {
         </styled.Footer__TextBlock__Second>
         <styled.Footer__Icons>
           {images.map((el, i) => (
-            <FooterIcon key={i} image={el[0]} link={el[1]} />
+            <IconLink key={i} image={el[0]} link={el[1]} />
           ))}
         </styled.Footer__Icons>
       </styled.Footer__Container>

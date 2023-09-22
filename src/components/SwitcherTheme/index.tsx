@@ -1,19 +1,20 @@
 import { useToggleTheme } from '@store/themeSlice/hooks';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
-import * as config from './index.config';
+import * as config from './config';
 import * as styled from './styled';
 
 const SwitcherTheme = () => {
+  const dataInput = useMemo(() => config.input, []);
   const [theme, setTheme] = useToggleTheme();
 
   const inputOnChange = useCallback(() => setTheme(), [setTheme]);
   return (
     <styled.Switcher id={config.switcher_id}>
       <styled.Switcher__Input
-        value={config.input_value}
+        type={dataInput.type}
+        value={dataInput.value}
         checked={theme === 'dark'}
-        type={config.input_type}
         onChange={inputOnChange}
       />
       <styled.Switcher__Slider />

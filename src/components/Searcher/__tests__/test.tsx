@@ -11,7 +11,7 @@ afterEach(cleanup);
 
 test('Logo test', () => {
   const { getByTestId, getByDisplayValue, getByPlaceholderText } = renderWithStore(
-    <Searcher className={css``} />
+    <Searcher cssRule={css``} />
   );
   const input = getByPlaceholderText(/Search.../i);
   expect(input).toBeTruthy();
