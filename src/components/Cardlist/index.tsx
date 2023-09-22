@@ -1,13 +1,13 @@
 import ButtonShowMore from '@components/ButtonShowMore';
 import Card from '@components/Card';
 import useMoviesIds from '@hooks/useMoviesIds';
-import useNumPerPage from '@hooks/useNumPerPage';
+import useWidthDependNum from '@hooks/useWidthDependNum';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import * as styled from './styled';
 
 const CardList = () => {
-  const numPerPageMovies = useNumPerPage();
+  const numPerPageMovies = useWidthDependNum();
   const [numMovies, setNumMovies] = useState(numPerPageMovies);
   const updateNumMovies = useCallback(() => {
     setNumMovies(numPerPageMovies);

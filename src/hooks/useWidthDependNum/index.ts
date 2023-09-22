@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import * as config from './config';
 
-export const useNumPerPage = () => {
+export const useWidthDependNum = () => {
   const mediaMatch = useMatchMedia(config.matchMedia);
   const [numPerPageMovies, setNumPerPageMovies] = useState(
     mediaMatch ? config.numMobile : config.numDesktop
@@ -14,4 +14,4 @@ export const useNumPerPage = () => {
   return numPerPageMovies;
 };
 
-export default useNumPerPage;
+export default useWidthDependNum;
