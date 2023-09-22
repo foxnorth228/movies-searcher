@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
 import IconLink from '@components/IconLink';
+import React, { useMemo } from 'react';
 
 import * as config from './config';
 import * as styled from './styled';

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+
 import { Options, TReturnUseElementOnScreen } from './types';
 
 const useElementOnScreen = (options: Options): TReturnUseElementOnScreen => {

@@ -1,7 +1,7 @@
-import MovieFallback from '@src/layouts/modalDialogMovie/fallback';
+import useMatchMedia from '@hooks/useMatchMedia';
+import MovieFallback from '@layouts/ModalDialogMovie/fallback';
 import { useSelectedMovie } from '@store/moviesSlice';
 import React, { useEffect, useState } from 'react';
-import useMatchMedia from '@hooks/useMatchMedia';
 
 import * as styled from './styled';
 

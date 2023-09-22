@@ -1,22 +1,22 @@
 describe('Testing modal dialog movie', () => {
   beforeEach(() => cy.visit('/'));
   it('Checking modal dialog is hidden', () => {
-    cy.get('#modalDialogMovie').should('not.exist');
+    cy.get('#ModalDialogMovie').should('not.exist');
   });
   it('Testing modal dialog', () => {
     cy.get('[data-testid=Card] > div', { timeout: 10000 }).should('exist');
     for (let i = 0; i < 16; ++i) {
       cy.get('[data-testid=Card] > div', { timeout: 10000 }).eq(i).click();
-      cy.get('[data-testid=modalDialogMovie]', { timeout: 10000 }).should('exist');
+      cy.get('[data-testid=ModalDialogMovie]', { timeout: 10000 }).should('exist');
       if (cy.contains(/Video is not available/i).should('not.exist')) {
         break;
       }
-      cy.get('[data-testid=modalDialogMovie]').click();
-      cy.get('#modalDialogMovie').should('not.exist');
+      cy.get('[data-testid=ModalDialogMovie]').click();
+      cy.get('#ModalDialogMovie').should('not.exist');
     }
-    cy.get('[data-testid=modalDialogMovie] iframe', { timeout: 10000 }).should('exist');
+    cy.get('[data-testid=ModalDialogMovie] iframe', { timeout: 10000 }).should('exist');
     cy.wait(10000);
-    cy.get('[data-testid=modalDialogMovie] iframe', { timeout: 10000 })
+    cy.get('[data-testid=ModalDialogMovie] iframe', { timeout: 10000 })
       .its('0.contentDocument')
       .find('html')
       .should('exist');
@@ -33,7 +33,7 @@ describe('Testing modal dialog movie', () => {
           cy.wrap(video).its('0.paused').should('equal', true);
         }
       });
-    cy.get('[data-testid=modalDialogMovie]').click();
-    cy.get('[data-testid=modalDialogMovie]').should('not.exist');
+    cy.get('[data-testid=ModalDialogMovie]').click();
+    cy.get('[data-testid=ModalDialogMovie]').should('not.exist');
   });
 });

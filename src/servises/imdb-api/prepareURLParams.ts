@@ -11,4 +11,4 @@ export const prepareURLParams = ({ count, title, genre }: IGetMoviesParameters) 
     urlParams.append('genres', genre);
   }
   return urlParams;
-}
+};

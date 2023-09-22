@@ -1,11 +1,11 @@
 import ErrorBoundary from '@components/ErrorBoundary';
-import Footer from '@layouts/footer';
-import Header from '@layouts/header';
-import Main from '@layouts/main';
+import Footer from '@layouts/Footer';
+import Header from '@layouts/Header';
+import Main from '@layouts/Main';
+import ModalDialogMovie from '@layouts/ModalDialogMovie';
 import { useSelectedMovie } from '@store/moviesSlice';
 import { useToggleTheme } from '@store/themeSlice/hooks';
 import React, { useEffect } from 'react';
-import ModalDialogMovie from '@layouts/modalDialogMovie';
 
 import * as styled from './styled';
 

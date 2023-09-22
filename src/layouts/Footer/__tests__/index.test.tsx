@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import Footer from 'src/layouts/Footer';
+import Footer from '@layouts/Footer';
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
 

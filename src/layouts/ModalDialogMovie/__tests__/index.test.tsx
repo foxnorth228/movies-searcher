@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 
+import ModalDialogMovie from '@layouts/ModalDialogMovie';
 import { cleanup } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
-import ModalDialogMovie from '@layouts/modalDialogMovie';
 
 afterEach(cleanup);
 

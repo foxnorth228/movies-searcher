@@ -1,7 +1,7 @@
+import { fallbackDataTestId, fallbackText } from '@components/Card/config';
 import React from 'react';
 
 import * as styled from './styled';
-import { fallbackDataTestId, fallbackText } from '@components/Card/config';
 
 const CardFallback = () => {
   return (

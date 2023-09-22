@@ -1,9 +1,9 @@
+import globalConfig from '@constants/global.config';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import { useGetMoviesQuery } from '@src/servises/imdb-api';
 import { IMovie } from '@src/servises/imdb-api/types';
 import { useGenreMovie, useSearchMovie } from '@store/moviesSlice';
 import { useEffect, useState } from 'react';
-import globalConfig from '@constants/global.config';
 
 export const useMoviesIds = (
   numMovies: number,
