@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
-import SwitcherTheme from 'src/components/SwitcherTheme';
+import SwitcherTheme from '@components/SwitcherTheme';
 
 afterEach(cleanup);
 

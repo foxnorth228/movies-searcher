@@ -4,7 +4,7 @@ import { expect } from '@jest/globals';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
-import SelectorGenre from 'src/components/SelectorGenre';
+import SelectorGenre from '@components/SelectorGenre';
 
 afterEach(cleanup);
 

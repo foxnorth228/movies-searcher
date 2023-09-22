@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
-import Logo from 'src/components/Logo';
+import Logo from '@components/Logo';
 
 afterEach(cleanup);
 

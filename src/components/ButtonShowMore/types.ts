@@ -1,4 +1,4 @@
 export interface IButtonShowMore {
-  display: string;
+  isDisplayed: boolean;
   moveNextPage: () => void;
 }

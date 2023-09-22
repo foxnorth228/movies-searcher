@@ -4,7 +4,7 @@ import { expect } from '@jest/globals';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
-import Searcher from 'src/components/Searcher';
+import Searcher from '@components/Searcher';
 import { css } from 'styled-components';
 
 afterEach(cleanup);

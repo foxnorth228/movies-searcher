@@ -1,11 +1,11 @@
-import { IMovie } from '@src/servises/imdb-api';
+import { cardDataTestId, imageAlt, threshold } from '@components/Card/config';
+import useElementOnScreen from '@hooks/useElementOnScreen';
+import { IMovie } from '@src/servises/imdb-api/types';
 import { useIdToMovies, useSelectedMovie } from '@store/moviesSlice';
 import React, { useCallback, useEffect, useState } from 'react';
-import useElementOnScreen from '@hooks/useElementOnScreen';
 
 import CardFallback from './fallback';
 import * as styled from './styled';
-import { imageAlt, threshold, cardDataTestId } from '@components/Card/config';
 
 const Card = ({ id }: IMovie) => {
   const [refVisibleObject, isVisible] = useElementOnScreen({ threshold: threshold });

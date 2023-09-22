@@ -1,4 +1,4 @@
-import CardList from '@components/cardlist';
+import CardList from '@components/Cardlist';
 import React from 'react';
 
 const Main = () => {

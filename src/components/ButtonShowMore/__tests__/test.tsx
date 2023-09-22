@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { expect } from '@jest/globals';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import ButtonShowMore from 'src/components/ButtonShowMore';
+import ButtonShowMore from '@components/ButtonShowMore';
 
 afterEach(cleanup);
 
@@ -11,7 +11,7 @@ test('ButtonShowMore test', () => {
   let count = 0;
   const { getByText } = render(
     <ButtonShowMore
-      display="block"
+      isDisplayed={true}
       moveNextPage={() => {
         count += 1;
       }}

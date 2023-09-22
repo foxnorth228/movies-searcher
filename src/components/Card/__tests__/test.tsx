@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import Card from 'src/components/Card';
+import Card from '@components/Card';
 import { expect } from '@jest/globals';
 import { cleanup, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

@@ -4,10 +4,10 @@ import React, { useCallback } from 'react';
 
 import * as styled from './styled';
 
-const ButtonShowMore = ({ display, moveNextPage }: IButtonShowMore) => {
+const ButtonShowMore = ({ isDisplayed, moveNextPage }: IButtonShowMore) => {
   const handleButtonOnClick = useCallback(() => moveNextPage(), [moveNextPage]);
   return (
-    <styled.ButtonShowMore onClick={handleButtonOnClick} $display={display}>
+    <styled.ButtonShowMore onClick={handleButtonOnClick} $isDisplayed={isDisplayed}>
       {buttonTitle}
     </styled.ButtonShowMore>
   );
