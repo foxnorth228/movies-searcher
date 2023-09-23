@@ -1,16 +1,17 @@
 import { RootState } from '@src/store';
-import { setTheme, themeName } from '@store/themeSlice';
+import { setTheme } from '@store/themeSlice';
+import { themeName } from '@store/themeSlice/config';
+import getTheme from '@store/themeSlice/getTheme';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const useToggleTheme = () => {
-  const stateTheme = useSelector((state: RootState) => state.theme);
-
+  const theme = useSelector((state: RootState) => state.theme);
   const dispatch = useDispatch();
   const toggleTheme = () => {
-    const state = stateTheme === 'light' ? 'dark' : 'light';
+    const state = theme.name === 'light' ? 'dark' : 'light';
     localStorage.setItem(themeName, state);
     dispatch(setTheme(state));
   };
 
-  return [stateTheme, toggleTheme] as [string, () => void];
+  return [theme, toggleTheme] as [ReturnType<typeof getTheme>, () => void];
 };

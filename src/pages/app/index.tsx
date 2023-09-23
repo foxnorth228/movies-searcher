@@ -6,6 +6,7 @@ import ModalDialogMovie from '@layouts/ModalDialogMovie';
 import { useSelectedMovie } from '@store/moviesSlice';
 import { useToggleTheme } from '@store/themeSlice/hooks';
 import React, { useEffect } from 'react';
+import { ThemeProvider } from 'styled-components';
 
 import * as styled from './styled';
 
@@ -13,7 +14,7 @@ const App = () => {
   const [theme] = useToggleTheme();
   const [selectedMovie] = useSelectedMovie();
   useEffect(() => {
-    if (theme === 'light') {
+    if (theme.name === 'light') {
       document.body.classList.add('light-theme');
       document.body.classList.remove('dark-theme');
     } else {
@@ -25,12 +26,14 @@ const App = () => {
   return (
     <>
       <styled.globalStyle />
-      <ErrorBoundary>
-        {Object.keys(selectedMovie).length !== 0 && <ModalDialogMovie />}
-        <Header />
-        <Main />
-        <Footer />
-      </ErrorBoundary>
+      <ThemeProvider theme={theme.value}>
+        <ErrorBoundary>
+          {Object.keys(selectedMovie).length !== 0 && <ModalDialogMovie />}
+          <Header />
+          <Main />
+          <Footer />
+        </ErrorBoundary>
+      </ThemeProvider>
     </>
   );
 };
