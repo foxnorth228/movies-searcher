@@ -4,10 +4,8 @@ import { useGenreMovie } from '@store/moviesSlice';
 import { useEffect, useState } from 'react';
 
 const useElasticSearch = (initialTitle: string) => {
-  console.log(initialTitle);
   const [title, setTitle] = useState(initialTitle);
   const [moviesTitle, setMoviesTitle] = useState<string[]>([]);
-  console.log(title);
   const [genre] = useGenreMovie();
   const { data, error } = useGetMoviesTitleQuery({ count: 6, title: title, genre: genre });
   useEffect(() => {
@@ -21,9 +19,8 @@ const useElasticSearch = (initialTitle: string) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log(timer, initialTitle);
       setTitle(initialTitle);
-    }, 3000);
+    }, 700);
     return () => clearTimeout(timer);
   }, [initialTitle]);
   return moviesTitle;

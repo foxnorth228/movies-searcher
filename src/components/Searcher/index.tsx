@@ -1,21 +1,23 @@
+import DropDownTitles from '@components/DropDownTitles';
 import * as config from '@components/Searcher/config';
 import { ISearcher } from '@components/Searcher/types';
+import useElasticSearch from '@hooks/useElasticSearch';
 import { useSearchMovie } from '@store/moviesSlice';
-import React, { useCallback, useMemo, useState } from 'react';
-import DropDownTitles from '@components/DropDownTitles';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import * as styled from './styled';
-import useElasticSearch from '@hooks/useElasticSearch';
 
 const Searcher = ({ cssRule }: ISearcher) => {
   const [inputValue, setInputValue] = useState('');
-  const [, setSearchWord] = useSearchMovie();
+  const [searchWord, setSearchWord] = useSearchMovie();
   const moviesTitle = useElasticSearch(inputValue);
   const [isOnFocus, setIsOnFocus] = useState(false);
 
   const dataInput = useMemo(() => config.input, []);
-  console.log(moviesTitle);
 
+  useEffect(() => {
+    setInputValue(searchWord);
+  }, [searchWord]);
   const processInputValue = useCallback(() => {
     setSearchWord(inputValue);
   }, [setSearchWord, inputValue]);
@@ -46,7 +48,7 @@ const Searcher = ({ cssRule }: ISearcher) => {
           onFocus={() => setIsOnFocus(true)}
           onBlur={() => setIsOnFocus(false)}
         />
-        {isOnFocus && <DropDownTitles />}
+        {isOnFocus && <DropDownTitles data={moviesTitle} />}
       </styled.Searcher__InputContainer>
       <styled.Searcher__Icon
         data-testid={config.labelDataTestId}

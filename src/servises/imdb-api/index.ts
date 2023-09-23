@@ -4,7 +4,9 @@ import { imdbMaxCount } from '@src/servises/imdb-api/config';
 import { prepareURLParams } from '@src/servises/imdb-api/prepareURLParams';
 import {
   IGetMoviesData,
-  IGetMoviesParameters, IGetMoviesTitleData, IGetMoviesTitleResponse, IGetMoviesTitleResponseData,
+  IGetMoviesParameters,
+  IGetMoviesTitleData,
+  IGetMoviesTitleResponse,
   ISearchResponse,
 } from '@src/servises/imdb-api/types';
 
