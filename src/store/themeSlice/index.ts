@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { theme, themeName } from '@store/themeSlice/config';
 import getTheme from '@store/themeSlice/getTheme';
 import { TTheme } from '@store/themeSlice/types';
-import { theme, themeName } from '@store/themeSlice/config';
 
 export const themeSlice = createSlice({
   name: themeName,

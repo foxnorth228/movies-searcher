@@ -1,6 +1,6 @@
-import themeLight from '@utils/themes/themeLight';
-import themeDark from '@utils/themes/themeDark';
 import { TTheme } from '@store/themeSlice/types';
+import themeDark from '@utils/themes/themeDark';
+import themeLight from '@utils/themes/themeLight';
 
 const getTheme = (name: TTheme) => {
   return {
