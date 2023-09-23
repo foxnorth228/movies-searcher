@@ -1,5 +1,5 @@
 import Skeleton from '@utils/styled-skeleton';
-import { styled } from 'styled-components';
+import { DefaultTheme, styled } from 'styled-components';
 
 export const Card = styled.article`
   position: relative;
@@ -8,7 +8,9 @@ export const Card = styled.article`
   min-height: 15rem;
 `;
 
-export const Card__Content = styled.div<{ $isVisible: boolean; $isLoadedImage: boolean }>`
+export const Card__Content = styled.div<
+  DefaultTheme & { $isVisible: boolean; $isLoadedImage: boolean }
+>`
   display: ${(props) => (props.$isLoadedImage ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: space-between;
@@ -21,7 +23,7 @@ export const Card__Content = styled.div<{ $isVisible: boolean; $isLoadedImage: b
   opacity: ${(props) => (props.$isVisible ? 1 : 0)};
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 10px 0 var(--card-box-shadow);
+    box-shadow: 0 0 10px 0 ${({ theme }) => theme.colors.cardBoxShadow};
   }
 `;
 
@@ -30,8 +32,8 @@ export const Card__Image = styled.img`
   height: auto;
 `;
 
-export const Card__Title = styled.h3`
-  font-family: Roboto, serif;
+export const Card__Title = styled.h3<DefaultTheme>`
+  font-family: ${({ theme }) => theme.fonts.roboto};
   font-size: 0.9rem;
   font-weight: 400;
   margin: 1.25rem 0 0;
@@ -41,8 +43,8 @@ export const Card__DescriptionBlock = styled.div`
   display: block;
 `;
 
-export const Card__Description = styled.span`
-  font-family: Roboto, serif;
+export const Card__Description = styled.span<DefaultTheme>`
+  font-family: ${({ theme }) => theme.fonts.roboto};
   font-size: 0.85rem;
 `;
 

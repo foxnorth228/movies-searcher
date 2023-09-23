@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
+import { DefaultTheme, styled } from 'styled-components';
 
-export const ButtonShowMore = styled.button<{ $isDisplayed: boolean }>`
+export const ButtonShowMore = styled.button<DefaultTheme>`
   display: ${(props) => (props.$isDisplayed ? 'block' : 'none')};
   margin: 0 auto;
   padding: 0.75rem 1.8rem;
@@ -9,15 +9,15 @@ export const ButtonShowMore = styled.button<{ $isDisplayed: boolean }>`
   border-radius: 0.5rem;
   background-color: #ff8a00;
   color: #fff;
-  font-family: Roboto, serif;
+  font-family: ${({ theme }) => theme.fonts.roboto};
   font-size: 1.1rem;
   font-weight: 700;
   &:hover {
     cursor: pointer;
-    background-color: var(--button-show-more-hover, #dc7700);
+    background-color: ${({ theme }) => theme.colors.buttonShowMoreHover};
   }
   &:active {
     cursor: pointer;
-    background-color: #5b2e00;
+    background-color: ${({ theme }) => theme.colors.buttonShowMoreActive};
   }
 `;

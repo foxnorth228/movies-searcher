@@ -1,65 +1,30 @@
-import { createGlobalStyle, styled } from 'styled-components';
+import { createGlobalStyle, DefaultTheme } from 'styled-components';
 
-export const globalStyle = createGlobalStyle`
+export const globalStyle = createGlobalStyle<DefaultTheme>`
   :root {
-    --background: white;
-    --text: black;
-    --footer-title: #8a8a8a;
-    --searcher-background: #e8e8e8;
-    --button-show-more-hover: #dc7700;
-    --button-show-more-active: #5b2e00;
-    --selector-genre-border: #cfcfcf;
-    --selector-genre: #f0f0f0;
-    --selector-genre-hover: #d8d8d8;
-    --selector-genre-text: black;
-    --selector-genre-selected: black;
-    --selector-genre-selected-text: white;
-    --card-box-shadow: #6b6b6b;
+    box-sizing: border-box;
   }
-
-  .light-theme {
-    --background: white;
-    --text: black;
-    --footer-title: #8a8a8a;
-    --searcher-background: #f5f5f5;
-    --button-show-more-hover: #dc7700;
-    --button-show-more-active: #5b2e00;
-    --selector-genre-border: #cfcfcf;
-    --selector-genre: #f0f0f0;
-    --selector-genre-hover: #d8d8d8;
-    --selector-genre-text: black;
-    --selector-genre-selected: black;
-    --selector-genre-selected-text: white;
-    --card-box-shadow: #6b6b6b;
-  }
-
-  .dark-theme {
-    --background: black;
-    --text: white;
-    --footer-title: #c2c2c2;
-    --searcher-background: #cccccc;
-    --button-show-more-hover: #be6600;
-    --button-show-more-active: #3d1d00;
-    --selector-genre-border: #d7d7d7;
-    --selector-genre: #f0f0f0;
-    --selector-genre-hover: #c0c0c0;
-    --selector-genre-text: black;
-    --selector-genre-selected: #131313;
-    --selector-genre-selected-text: white;
-    --card-box-shadow: #ffffff;
+  
+  #root {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
   }
   
   body {
-    background: var(--background, white);
+    margin: 0;
+    background: ${(props) => props.theme.colors.background}
   }
 
   label, span, p, div, h1, h2, h3, h4, h5, h6 {
-    color: var(--text);
+    color: ${(props) => props.theme.colors.text}
   }
 
   *,
   :after,
   :before {
+    box-sizing: inherit;
     transition: color 0.3s linear, background-color 0.3s linear;
   }
   
@@ -89,26 +54,5 @@ export const globalStyle = createGlobalStyle`
     html {
       font-size: 15px;
     }
-  }
-
-  body {
-    margin: 0;
-  }
-
-  :root {
-    box-sizing: border-box;
-  }
-
-  *,
-  :after,
-  :before {
-    box-sizing: inherit;
-  }
-
-  #root {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: min-content 1fr min-content;
   }
 `;

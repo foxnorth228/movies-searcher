@@ -25,4 +25,5 @@
     "noImplicitAny": true,
     "skipLibCheck": true
   },
+  "include": ["./src/styled.d.ts"],
 }

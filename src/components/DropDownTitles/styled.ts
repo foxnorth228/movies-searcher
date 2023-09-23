@@ -24,10 +24,11 @@ export const DropDownTitles__Element = styled.li`
   white-space: nowrap;
   text-overflow: ellipsis;
   background-color: inherit;
+  color: black;
   line-height: var(--searcher-height, 2rem);
   &:hover {
     cursor: pointer;
-    background-color: var(--searcher-background, #e8e8e8);
+    background-color: ${(props) => props.theme.colors.searcherBackground};
   }
   &:active {
     background-color: #6b6b6b;

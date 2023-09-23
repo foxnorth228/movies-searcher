@@ -1,7 +1,7 @@
 import { TCssRule } from '@components/Searcher/types';
-import { styled } from 'styled-components';
+import { DefaultTheme, styled } from 'styled-components';
 
-export const Searcher = styled.article<{ $class: TCssRule }>`
+export const Searcher = styled.article<DefaultTheme & { $class: TCssRule }>`
   display: flex;
   width: 80%;
   max-width: 30rem;
@@ -11,7 +11,7 @@ export const Searcher = styled.article<{ $class: TCssRule }>`
   --searcher-icon-size: 3rem;
   ${(props) => props.$class}
   &:hover {
-    background-color: var(--searcher-background, #e8e8e8);
+    background-color: ${(props) => props.theme.colors.searcherBackground};
   }
 `;
 

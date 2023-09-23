@@ -1,11 +1,11 @@
-import { styled } from 'styled-components';
+import { DefaultTheme, styled } from 'styled-components';
 
-export const ErrorBoundary = styled.div`
+export const ErrorBoundary = styled.div<DefaultTheme>`
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--background, white);
-  color: var(--text, black);
+  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.text};
 `;
