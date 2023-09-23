@@ -4,7 +4,7 @@ import { imdbMaxCount } from '@src/servises/imdb-api/config';
 import { prepareURLParams } from '@src/servises/imdb-api/prepareURLParams';
 import {
   IGetMoviesData,
-  IGetMoviesParameters,
+  IGetMoviesParameters, IGetMoviesTitleData, IGetMoviesTitleResponse, IGetMoviesTitleResponseData,
   ISearchResponse,
 } from '@src/servises/imdb-api/types';
 
@@ -12,6 +12,31 @@ export const imdbApi = createApi({
   reducerPath: 'imdbApi',
   baseQuery: fetchBaseQuery({ baseUrl: globalConfig.DOMAIN_URL }),
   endpoints: (builder) => ({
+    getMoviesTitle: builder.query<IGetMoviesTitleData, IGetMoviesParameters>({
+      async queryFn(args, __, ___, fetchWithBQ) {
+        const urlParams = prepareURLParams(args);
+        const res = await fetchWithBQ(
+          '/AdvancedSearch/' + globalConfig.API_KEY + '?' + urlParams.toString()
+        );
+        const { data, error } = res as IGetMoviesTitleResponse;
+        if (error) {
+          return { error };
+        } else if (data.errorMessage && data.errorMessage !== '') {
+          return {
+            error: {
+              status: 400,
+              statusText: data.errorMessage,
+              data: data.errorMessage,
+            },
+          };
+        }
+        return {
+          data: {
+            titles: data.results.map((el) => el.title),
+          },
+        };
+      },
+    }),
     getMovies: builder.query<IGetMoviesData, IGetMoviesParameters>({
       async queryFn(args, __, ___, fetchWithBQ) {
         const objParams = { ...args };
@@ -64,4 +89,4 @@ export const imdbApi = createApi({
   }),
 });
 
-export const { useGetMoviesQuery, useGetInfoQuery } = imdbApi;
+export const { useGetMoviesQuery, useGetInfoQuery, useGetMoviesTitleQuery } = imdbApi;

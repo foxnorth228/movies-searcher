@@ -5,7 +5,8 @@ export const Searcher = styled.article<{ $class: TCssRule }>`
   display: flex;
   width: 80%;
   max-width: 30rem;
-  height: 2rem;
+  --searcher-height: 2rem;
+  height: var(--searcher-height, 2rem);
   background-color: white;
   --searcher-icon-size: 3rem;
   ${(props) => props.$class}
@@ -14,10 +15,16 @@ export const Searcher = styled.article<{ $class: TCssRule }>`
   }
 `;
 
+export const Searcher__InputContainer = styled.div`
+  display: flex;
+  width: calc(100% - var(--searcher-icon-size));
+  position: relative;
+`;
+
 export const Searcher__Input = styled.input`
   background-color: inherit;
   box-sizing: border-box;
-  width: calc(100% - var(--searcher-icon-size));
+  width: 100%;
   height: 100%;
   border: 2px solid #c4c4c4;
   padding: calc(0.25 * 1rem) calc(0.75 * 1rem);
