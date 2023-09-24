@@ -1,21 +1,19 @@
 import '@testing-library/jest-dom';
 
 import { expect, jest } from '@jest/globals';
-import { cleanup, fireEvent, render } from '@testing-library/react';
-import renderWithStore, { wrapProvider } from '../../../utils/renderWithStore';
+import { cleanup } from '@testing-library/react';
 import React from 'react';
+
+import renderWithStore, { wrapProvider } from '../../../utils/renderWithStore';
 import ErrorBoundary from '../index';
+import { errorMessage, TestComponent } from '../TestComponent';
 
 afterEach(cleanup);
-
-const TestComponent = () => {
-  throw new Error('test error');
-};
 
 test('ErrorBoundary test', async () => {
   jest.spyOn(console, 'error').mockImplementation(() => null);
   jest.spyOn(console, 'log').mockImplementation(() => null);
-  const { rerender } = renderWithStore(<ErrorBoundary>null</ErrorBoundary>);
+  const { getByText, rerender } = renderWithStore(<ErrorBoundary>null</ErrorBoundary>);
   rerender(
     wrapProvider(
       <ErrorBoundary>
@@ -23,4 +21,6 @@ test('ErrorBoundary test', async () => {
       </ErrorBoundary>
     )
   );
+  const error = getByText(errorMessage);
+  expect(error).toBeInTheDocument();
 });

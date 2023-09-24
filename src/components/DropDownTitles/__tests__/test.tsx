@@ -6,13 +6,14 @@ import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
 
 import DropDownTitles from '../index';
+import { testCount, testValue } from './config';
 
 afterEach(cleanup);
 
 test('DropDownTitles test', async () => {
-  const data = ['Title 1', 'Title 2', 'Title 3', 'Title 4'];
+  const data = new Array(testCount).fill(testValue);
   const { getAllByText } = renderWithStore(<DropDownTitles data={data} />);
-  const elems = getAllByText(/Title/i);
-  expect(elems).toHaveLength(4);
-  fireEvent.mouseDown(elems[0]);
+  const elems = getAllByText(testValue);
+  expect(elems).toHaveLength(testCount);
+  fireEvent.mouseDown(elems[testCount - testCount]);
 });

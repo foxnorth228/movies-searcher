@@ -4,6 +4,7 @@ import SwitcherTheme from '@components/SwitcherTheme';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
+
 import { input } from '../config';
 
 afterEach(cleanup);

@@ -21,7 +21,7 @@ export const useMoviesIds = (
   useEffect(() => {
     if (data) {
       setMoviesIds(data.movies);
-      setIsLastData(!data.isLastData);
+      setIsLastData(data.isLastData);
     }
     if (error) {
       alert('error' in error ? error.error : JSON.stringify((error as FetchBaseQueryError).data));

@@ -4,9 +4,9 @@ import { IMovie } from '@src/servises/imdb-api/types';
 import { useIdToMovies, useSelectedMovie } from '@store/moviesSlice';
 import React, { useCallback, useEffect, useState } from 'react';
 
+import globalConfig from '../../constants/global.config';
 import CardFallback from './fallback';
 import * as styled from './styled';
-import globalConfig from '../../constants/global.config';
 
 const Card = ({ id }: IMovie) => {
   const [refVisibleObject, isVisible] = useElementOnScreen({ threshold: threshold });

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import * as styled from './styled';
 import { fallbackDataTestId } from './config';
+import * as styled from './styled';
 
 const MovieFallback = () => {
   return (

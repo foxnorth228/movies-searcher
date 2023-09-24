@@ -1,4 +1,7 @@
+import themeDefault from './themeDefault';
+
 const themeDark = {
+  ...themeDefault,
   colors: {
     background: 'black',
     text: 'white',
@@ -13,13 +16,6 @@ const themeDark = {
     selectorGenreSelected: '#131313',
     selectorGenreSelectedText: 'white',
     cardBoxShadow: '#ffffff',
-  },
-  fonts: {
-    roboto: 'Roboto, Arial, sans-serif',
-  },
-  fontSizes: {
-    searcherHeight: '2rem',
-    searcherIconSize: '3rem',
   },
 };
 

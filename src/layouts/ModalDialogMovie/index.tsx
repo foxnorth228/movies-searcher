@@ -1,10 +1,10 @@
 import MovieFallback from '@layouts/ModalDialogMovie/fallback';
 import useModalDialogMovieWidth from '@layouts/ModalDialogMovie/useModalDialogMovieWidth';
 import { useSelectedMovie } from '@store/moviesSlice';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
-import * as styled from './styled';
 import { alternativeText, dataTestId } from './config';
+import * as styled from './styled';
 
 const ModalDialogMovie = () => {
   const [selectedMovie, setSelectedMovie] = useSelectedMovie();
@@ -18,11 +18,15 @@ const ModalDialogMovie = () => {
   const notNullTrailer = typeof trailer === 'object' && trailer;
   const movie = notNullTrailer && 'linkEmbed' in notNullTrailer && notNullTrailer['linkEmbed'];
 
+  const handleDialogOnClick = useCallback(() => {
+    setSelectedMovie('');
+  }, [setSelectedMovie]);
+
   const urlParams = new URLSearchParams();
   urlParams.append('autoplay', 'false');
   urlParams.append('width', String(width));
   return (
-    <styled.ModalDialogMovie data-testid={dataTestId} onClick={() => setSelectedMovie('')}>
+    <styled.ModalDialogMovie data-testid={dataTestId} onClick={handleDialogOnClick}>
       <styled.ModalDialogMovie__Content $width={width}>
         {!isLoadedFrame && typeof movie === 'string' && <MovieFallback />}
         {typeof movie === 'string' ? (

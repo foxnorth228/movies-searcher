@@ -1,4 +1,7 @@
+import themeDefault from '@utils/themes/themeDefault';
+
 const themeLight = {
+  ...themeDefault,
   colors: {
     background: 'white',
     text: 'black',
@@ -13,13 +16,6 @@ const themeLight = {
     selectorGenreSelected: 'black',
     selectorGenreSelectedText: 'white',
     cardBoxShadow: '#6b6b6b',
-  },
-  fonts: {
-    roboto: 'Roboto, Arial, sans-serif',
-  },
-  fontSizes: {
-    searcherHeight: '2rem',
-    searcherIconSize: '3rem',
   },
 };
 

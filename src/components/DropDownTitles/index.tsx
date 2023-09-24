@@ -9,7 +9,7 @@ const DropDownTitles = ({ data }: IDropDownTitles) => {
 
   const handleElementOnClick = useCallback(
     (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-      setSearchWord(String(e.currentTarget.dataset['value']));
+      setSearchWord(String(e.currentTarget.dataset.value));
     },
     [setSearchWord]
   );

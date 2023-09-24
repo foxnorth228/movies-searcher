@@ -4,6 +4,7 @@ import { RootState } from '@src/store';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import globalConfig from '../../constants/global.config';
 import { setGenre, setSearchWord, setSelectedMovie } from './index';
 
 export const useSearchMovie = () => {
@@ -38,7 +39,9 @@ function createEmptyMovie() {
 export const useIdToMovies = (id: string): [ReturnType<typeof createEmptyMovie>, boolean] => {
   const movies = useMovies();
   const isMovieStored = id in movies;
-  const { error } = useGetInfoQuery(id, { skip: id === 'skip' || isMovieStored });
+  const { error } = useGetInfoQuery(id, {
+    skip: id === globalConfig.DEFAULT_CARD_ID || isMovieStored,
+  });
   useEffect(() => {
     if (error) {
       alert('error' in error ? error.error : JSON.stringify((error as FetchBaseQueryError).data));

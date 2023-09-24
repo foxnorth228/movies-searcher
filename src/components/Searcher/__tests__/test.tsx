@@ -5,9 +5,10 @@ import { expect } from '@jest/globals';
 import { cleanup, fireEvent } from '@testing-library/react';
 import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
-import { css } from 'styled-components';
-import { input as dataInput, labelDataTestId } from '../config';
 import { act } from 'react-test-renderer';
+import { css } from 'styled-components';
+
+import { input as dataInput, labelDataTestId } from '../config';
 
 afterEach(cleanup);
 

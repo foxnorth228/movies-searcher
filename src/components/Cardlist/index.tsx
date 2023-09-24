@@ -4,8 +4,8 @@ import useMoviesIds from '@hooks/useMoviesIds';
 import useWidthDependNum from '@hooks/useWidthDependNum';
 import React, { useCallback, useEffect, useState } from 'react';
 
-import * as styled from './styled';
 import { alternativeText } from './config';
+import * as styled from './styled';
 
 const CardList = () => {
   const numPerPageMovies = useWidthDependNum();

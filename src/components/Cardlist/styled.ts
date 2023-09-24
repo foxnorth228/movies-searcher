@@ -8,7 +8,7 @@ export const CardList__Container = styled.section`
   display: grid;
   margin: 1.2rem 0.7rem;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fill, minmax(10px, 1fr));
   grid-auto-rows: 1fr;
   grid-gap: 1.5rem 1rem;
   justify-items: center;
