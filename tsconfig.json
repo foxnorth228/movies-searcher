@@ -23,7 +23,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
   },
   "include": ["./src/styled.d.ts"],
 }

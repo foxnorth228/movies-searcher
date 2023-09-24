@@ -15,12 +15,14 @@ test('Logo test', () => {
   );
   const input = getByPlaceholderText(/Search.../i);
   expect(input).toBeTruthy();
+  fireEvent.focus(input);
   const testValue = 'TestValue';
   fireEvent.input(input, { target: { value: testValue } });
   const changedInput = getByDisplayValue(testValue);
   expect(changedInput).toBeTruthy();
   fireEvent.keyUp(input);
   fireEvent.keyUp(input, { key: 'Enter', code: 'Enter', charCode: 13 });
+  fireEvent.focusOut(input);
   const label = getByTestId(/searcher-label/i);
   fireEvent.click(label);
 });

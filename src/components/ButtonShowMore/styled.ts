@@ -1,6 +1,6 @@
 import { DefaultTheme, styled } from 'styled-components';
 
-export const ButtonShowMore = styled.button<DefaultTheme>`
+export const ButtonShowMore = styled.button<DefaultTheme & { $isDisplayed: boolean }>`
   display: ${(props) => (props.$isDisplayed ? 'block' : 'none')};
   margin: 0 auto;
   padding: 0.75rem 1.8rem;

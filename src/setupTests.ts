@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
 
 import globalConfig from '@constants/global.config';
 import { jest } from '@jest/globals';
@@ -66,7 +67,15 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 class IntersectionObserver {
-  observe = jest.fn();
+  static isIntersecting = 0;
+  func;
+  constructor(func: (arg: { isIntersecting: boolean }[]) => void) {
+    this.func = func;
+  }
+  observe = jest.fn(() => {
+    this.func([{ isIntersecting: Boolean(IntersectionObserver.isIntersecting) }]);
+    IntersectionObserver.isIntersecting += 1;
+  });
   disconnect = jest.fn();
   unobserve = jest.fn();
 }
