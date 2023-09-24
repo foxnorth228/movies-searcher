@@ -4,6 +4,7 @@ import { useSelectedMovie } from '@store/moviesSlice';
 import React, { useState } from 'react';
 
 import * as styled from './styled';
+import { alternativeText, dataTestId } from './config';
 
 const ModalDialogMovie = () => {
   const [selectedMovie, setSelectedMovie] = useSelectedMovie();
@@ -21,7 +22,7 @@ const ModalDialogMovie = () => {
   urlParams.append('autoplay', 'false');
   urlParams.append('width', String(width));
   return (
-    <styled.ModalDialogMovie data-testid="modal-dialog-movie" onClick={() => setSelectedMovie('')}>
+    <styled.ModalDialogMovie data-testid={dataTestId} onClick={() => setSelectedMovie('')}>
       <styled.ModalDialogMovie__Content $width={width}>
         {!isLoadedFrame && typeof movie === 'string' && <MovieFallback />}
         {typeof movie === 'string' ? (
@@ -36,7 +37,7 @@ const ModalDialogMovie = () => {
           ></styled.ModalDialogMovie__Video>
         ) : (
           <styled.ModalDialogMovie__ErrorMessage>
-            {'Video is not available: '}
+            {alternativeText}
             {notNullTrailer &&
               'errorMessage' in notNullTrailer &&
               (notNullTrailer['errorMessage'] as string)}

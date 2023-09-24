@@ -17,7 +17,10 @@ const themeDark = {
   fonts: {
     roboto: 'Roboto, Arial, sans-serif',
   },
-  fontSizes: {},
+  fontSizes: {
+    searcherHeight: '2rem',
+    searcherIconSize: '3rem',
+  },
 };
 
 export default themeDark;

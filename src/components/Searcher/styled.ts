@@ -5,11 +5,9 @@ export const Searcher = styled.article<DefaultTheme & { $class: TCssRule }>`
   display: flex;
   width: 80%;
   max-width: 30rem;
-  --searcher-height: 2rem;
-  height: var(--searcher-height, 2rem);
+  height: ${({ theme }) => theme.fontSizes.searcherHeight};
   background-color: white;
-  --searcher-icon-size: 3rem;
-  ${(props) => props.$class}
+  ${(props) => props.$class};
   &:hover {
     background-color: ${(props) => props.theme.colors.searcherBackground};
   }
@@ -17,7 +15,7 @@ export const Searcher = styled.article<DefaultTheme & { $class: TCssRule }>`
 
 export const Searcher__InputContainer = styled.div`
   display: flex;
-  width: calc(100% - var(--searcher-icon-size));
+  width: calc(100% - ${({ theme }) => theme.fontSizes.searcherIconSize});
   position: relative;
 `;
 
@@ -33,7 +31,7 @@ export const Searcher__Input = styled.input`
 
 export const Searcher__Icon = styled.label`
   display: block;
-  width: var(--searcher-icon-size);
+  width: ${({ theme }) => theme.fontSizes.searcherIconSize};
   height: 100%;
   background: url('./search.svg') no-repeat center center;
   background-color: inherit;

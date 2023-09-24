@@ -7,15 +7,16 @@ import userEvent from '@testing-library/user-event';
 import renderWithStore from '@utils/renderWithStore';
 import React from 'react';
 import { act } from 'react-test-renderer';
+import { buttonTitle } from '@components/ButtonShowMore/config';
 
 afterEach(cleanup);
 
-test('Logo test', async () => {
+test('CardList test', async () => {
   const { getByText } = renderWithStore(<CardList />);
-  let button = getByText(/show more/i);
+  let button = getByText(buttonTitle);
   expect(button).toBeTruthy();
   fireEvent.click(button);
-  button = getByText(/show more/i);
+  button = getByText(buttonTitle);
   await act(async () => {
     await userEvent.click(button);
   });

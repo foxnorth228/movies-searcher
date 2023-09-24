@@ -12,7 +12,7 @@ export const useMoviesIds = (
   const [moviesIds, setMoviesIds] = useState<IMovie[]>(
     new Array(numMovies).fill({ id: globalConfig.DEFAULT_CARD_ID })
   );
-  const [isButtonDisplayed, setIsButtonDisplayed] = useState(true);
+  const [isLastData, setIsLastData] = useState(true);
   const [searchWord] = useSearchMovie();
   const [genre] = useGenreMovie();
 
@@ -21,7 +21,7 @@ export const useMoviesIds = (
   useEffect(() => {
     if (data) {
       setMoviesIds(data.movies);
-      setIsButtonDisplayed(!data.isLastData);
+      setIsLastData(!data.isLastData);
     }
     if (error) {
       alert('error' in error ? error.error : JSON.stringify((error as FetchBaseQueryError).data));
@@ -32,7 +32,7 @@ export const useMoviesIds = (
     updateNumMovies();
   }, [updateNumMovies, searchWord, genre]);
 
-  return [moviesIds, Boolean(isButtonDisplayed)];
+  return [moviesIds, Boolean(isLastData)];
 };
 
 export default useMoviesIds;

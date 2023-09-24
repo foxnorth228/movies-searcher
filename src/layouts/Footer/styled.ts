@@ -47,8 +47,8 @@ export const Footer__Icons = styled.article`
 
 export const Footer__Title = styled.h2`
   text-align: center;
-  color: var(--footer-title, #8a8a8a);
+  color: ${({ theme }) => theme.colors.footerTitle};
   font-size: 1.2rem;
-  font-family: 'Roboto', serif;
+  font-family: ${({ theme }) => theme.fonts.roboto};
   font-weight: 500;
 `;

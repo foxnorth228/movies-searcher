@@ -7,6 +7,6 @@ import React from 'react';
 
 afterEach(cleanup);
 
-test('Logo test', () => {
+test('ModalDialogMovie test', () => {
   renderWithStore(<ModalDialogMovie />);
 });

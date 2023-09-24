@@ -5,6 +5,7 @@ import useWidthDependNum from '@hooks/useWidthDependNum';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import * as styled from './styled';
+import { alternativeText } from './config';
 
 const CardList = () => {
   const numPerPageMovies = useWidthDependNum();
@@ -12,7 +13,7 @@ const CardList = () => {
   const updateNumMovies = useCallback(() => {
     setNumMovies(numPerPageMovies);
   }, [numPerPageMovies]);
-  const [moviesIds, isButtonDisplayed] = useMoviesIds(numMovies, updateNumMovies);
+  const [moviesIds, isLastData] = useMoviesIds(numMovies, updateNumMovies);
 
   useEffect(() => {
     updateNumMovies();
@@ -31,12 +32,10 @@ const CardList = () => {
         {moviesIds.length !== 0 ? (
           moviesIds.map((el, i) => <Card key={el.id + i} id={el.id} />)
         ) : (
-          <styled.CardList__Fallback>
-            There are no movies suitable for your needs
-          </styled.CardList__Fallback>
+          <styled.CardList__Fallback>{alternativeText}</styled.CardList__Fallback>
         )}
       </styled.CardList__Container>
-      <ButtonShowMore isDisplayed={Boolean(isButtonDisplayed)} moveNextPage={moveNextPage} />
+      <ButtonShowMore isDisplayed={!isLastData} moveNextPage={moveNextPage} />
     </styled.CardList>
   );
 };

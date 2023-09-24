@@ -1,13 +1,16 @@
-import { styled } from 'styled-components';
+import { DefaultTheme, styled } from 'styled-components';
 
-export const DropDownTitles = styled.ul<{ $size: number }>`
+export const DropDownTitles = styled.ul<DefaultTheme & { $size: number }>`
   width: 100%;
   height: fit-content;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(${(props) => props.$size}, var(--searcher-height, 2rem));
+  grid-template-rows: repeat(
+    ${(props) => props.$size},
+    ${({ theme }) => theme.fontSizes.searcherHeight}
+  );
   align-items: center;
-  margin: var(--searcher-height, 2rem) 0 0 0;
+  margin: ${({ theme }) => theme.fontSizes.searcherHeight} 0 0 0;
   position: absolute;
   z-index: 2;
   background-color: white;
@@ -16,7 +19,7 @@ export const DropDownTitles = styled.ul<{ $size: number }>`
   padding-left: 0;
 `;
 
-export const DropDownTitles__Element = styled.li`
+export const DropDownTitles__Element = styled.li<DefaultTheme>`
   width: 100%;
   height: 100%;
   padding-left: 1rem;
@@ -25,7 +28,7 @@ export const DropDownTitles__Element = styled.li`
   text-overflow: ellipsis;
   background-color: inherit;
   color: black;
-  line-height: var(--searcher-height, 2rem);
+  line-height: ${({ theme }) => theme.fontSizes.searcherHeight};
   &:hover {
     cursor: pointer;
     background-color: ${(props) => props.theme.colors.searcherBackground};

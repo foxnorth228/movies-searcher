@@ -18,6 +18,7 @@ const Searcher = ({ cssRule }: ISearcher) => {
   useEffect(() => {
     setInputValue(searchWord);
   }, [searchWord]);
+
   const processInputValue = useCallback(() => {
     setSearchWord(inputValue);
   }, [setSearchWord, inputValue]);

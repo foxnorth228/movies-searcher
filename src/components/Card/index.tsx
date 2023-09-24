@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import CardFallback from './fallback';
 import * as styled from './styled';
+import globalConfig from '../../constants/global.config';
 
 const Card = ({ id }: IMovie) => {
   const [refVisibleObject, isVisible] = useElementOnScreen({ threshold: threshold });
@@ -24,8 +25,8 @@ const Card = ({ id }: IMovie) => {
 
   return (
     <styled.Card data-testid={cardDataTestId}>
-      {(id === 'skip' || !isLoadedImage) && <CardFallback />}
-      {id !== 'skip' && (
+      {(id === globalConfig.DEFAULT_CARD_ID || !isLoadedImage) && <CardFallback />}
+      {id !== globalConfig.DEFAULT_CARD_ID && (
         <styled.Card__Content
           ref={refVisibleObject}
           $isVisible={isVisible}

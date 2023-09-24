@@ -8,16 +8,19 @@ import renderWithStore, { wrapProvider } from '@utils/renderWithStore';
 import React from 'react';
 import { act } from 'react-test-renderer';
 
+import globalConfig from '../../../constants/global.config';
+import { fallbackText, imageAlt } from '../config';
+
 afterEach(cleanup);
 
-test('Logo test', async () => {
+test('Card test', async () => {
   const { rerender, getByText, getByAltText, queryAllByText } = renderWithStore(
-    <Card id={'skip'} />
+    <Card id={globalConfig.DEFAULT_CARD_ID} />
   );
-  const skeleton = queryAllByText(/skeleton loader/i);
+  const skeleton = queryAllByText(fallbackText);
   expect(skeleton.length).toBeTruthy();
   rerender(wrapProvider(<Card id={'test'} />));
-  const image = getByAltText('movie-image') as HTMLImageElement;
+  const image = getByAltText(imageAlt) as HTMLImageElement;
   expect(image).toBeTruthy();
   await act(() => {
     fireEvent.load(image);

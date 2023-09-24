@@ -14,7 +14,7 @@ const SwitcherTheme = () => {
       <styled.Switcher__Input
         type={dataInput.type}
         value={dataInput.value}
-        checked={theme === 'dark'}
+        checked={theme.name === 'dark'}
         onChange={inputOnChange}
       />
       <styled.Switcher__Slider />
